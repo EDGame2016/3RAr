@@ -58,6 +58,9 @@
 			<Add directory="SFML-2.3.2/lib" />
 		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
