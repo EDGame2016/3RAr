@@ -1,4 +1,14 @@
-#include <SFML/Graphics.hpp>
+#include "JogoAr.h"
+
+int main()
+{
+    JogoAr jogo;
+    jogo.run();
+
+    return EXIT_SUCCESS;
+}
+
+/*#include <SFML/Graphics.hpp>
 
 int main()
 {
@@ -21,4 +31,4 @@ int main()
     }
 
     return 0;
-}
+}*/

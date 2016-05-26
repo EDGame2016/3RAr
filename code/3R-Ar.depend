@@ -1,6 +1,6 @@
 # depslib dependency file v1.0
-1463928282 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\main.cpp
-	<SFML/Graphics.hpp>
+1464272437 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\main.cpp
+	"JogoAr.h"
 
 1429780453 c:\program files (x86)\codeblocks\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -759,4 +759,69 @@
 	<vector>
 
 1461537631 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\resource.rc
+
+1464270101 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
+	"Entidade.h"
+
+1464270089 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
+	<NodeCena.h>
+
+1464275159 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<vector>
+
+1464284740 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
+	"JogoAr.h"
+
+1464273215 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<toString.h>
+	"Mundo.h"
+
+1464285808 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<array>
+	"NodeCena.h"
+	"SpriteNode.h"
+	"Entidade.h"
+
+1464143438 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\resourceholder.h
+	<map>
+	<string>
+	<memory>
+	<stdexcept>
+	<cassert>
+
+1464269878 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
+	<NodeCena.h>
+	<SFML/Graphics/Sprite.hpp>
+
+1464143090 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
+	<sstream>
+
+1464284245 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
+	"Mundo.h"
+	<iostream>
+
+1464283292 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
+	"NodeCena.h"
+	<stdio.h>
+
+1464143952 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\resourceholder.cpp
+	"ResourceHolder.h"
+
+1464269919 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
+	"SpriteNode.h"
+	<SFML/Graphics/RenderTarget.hpp>
+
+1464143299 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
+	"toString.h"
+
+1464266610 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\idresources.h
 

@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="SFML-2.3.2/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -32,6 +33,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="SFML-2.3.2/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -57,10 +59,22 @@
 			<Add library="sfml-main" />
 			<Add directory="SFML-2.3.2/lib" />
 		</Linker>
+		<Unit filename="include/Entidade.h" />
+		<Unit filename="include/JogoAr.h" />
+		<Unit filename="include/Mundo.h" />
+		<Unit filename="include/NodeCena.h" />
+		<Unit filename="include/SpriteNode.h" />
+		<Unit filename="include/toString.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src/Entidade.cpp" />
+		<Unit filename="src/JogoAr.cpp" />
+		<Unit filename="src/Mundo.cpp" />
+		<Unit filename="src/NodeCena.cpp" />
+		<Unit filename="src/SpriteNode.cpp" />
+		<Unit filename="src/toString.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
