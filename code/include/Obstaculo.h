@@ -7,7 +7,12 @@ class Obstaculo : public Entidade
     public:
         enum Type
         {
-
+            Aviao,
+            Chuva,
+            Jato,
+            Meteoro,
+            Onibus,
+            Satalite,
         };
 
     public:
@@ -18,6 +23,8 @@ class Obstaculo : public Entidade
     private:
         Type tipo;
         int dano;
+
+        sf::Texture& obstaculo[2];
 };
 
 #endif // OBSTACULO_H
