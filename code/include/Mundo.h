@@ -47,7 +47,7 @@ private:
     sf::Vector2f						viewCenter;
     float								scrollSpeed;
 
-    sf::Texture background[5];
+    sf::Texture background[11];
 };
 
 #endif // MUNDO_H
