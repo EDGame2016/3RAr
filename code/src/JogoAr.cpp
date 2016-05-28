@@ -2,10 +2,9 @@
 
 const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
 
-JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "Test"), mundoDoJogo(tela)
-
+JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "Test"), mundoDoJogo(tela), mainMenu(tela)
 {
-
+    state = false;
 }
 
 void JogoAr::run()
@@ -38,7 +37,7 @@ void JogoAr::processaEventos()
 	{
 		switch (event.type)
 		{
-			case sf::Event::KeyPressed:
+			case (sf::Event::KeyPressed):
 				playerInput(event.key.code, true);
 				break;
 
@@ -49,27 +48,42 @@ void JogoAr::processaEventos()
 			case sf::Event::Closed:
 				tela.close();
 				break;
+            default:
+                break;
 		}
 	}
 }
 
 void JogoAr::atualiza(sf::Time elapsedTime)
 {
-	mundoDoJogo.atualiza(elapsedTime);
+	if(state)
+        mundoDoJogo.atualiza(elapsedTime);
+    else
+        mainMenu.atualiza(elapsedTime);
 }
 
 void JogoAr::renderiza()
 {
 	tela.clear(sf::Color(0,150,255,0));
 
-	mundoDoJogo.desenha();
+    if(state)
+        mundoDoJogo.desenha();
+    else
+        mainMenu.desenha();
 
 	tela.setView(tela.getDefaultView());
 	tela.display();
 }
 
-void JogoAr::playerInput(sf::Keyboard::Key, bool)
+void JogoAr::playerInput(sf::Keyboard::Key key, bool isPressed)
 {
-
+    switch(key)
+    {
+    case sf::Keyboard::Q:
+    {
+        state = !state;
+        break;
+    }
+    }
 }
 

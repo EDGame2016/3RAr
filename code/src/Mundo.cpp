@@ -52,9 +52,8 @@ void Mundo::loadTexturas()
 void Mundo::constroiCena()
 {
 	// Inicializa as diferentes camadas (Layers)
-	for (int i = 0; i < LayerCount; ++i)
+	for (int i = 0; i < LayerCount; i++)
 	{
-	    std::cout<<i<<std::endl;
 		NodeCena* layer;
 		layer = new NodeCena;
 		layersCena[i] = layer;

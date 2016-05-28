@@ -5,13 +5,11 @@
 
 class Entidade : public NodeCena
 {
-	public:
-                            Entidade();
-                            ~Entidade();
+public:
+    Entidade();
 
-	private:
-		virtual void		atualizaAtual(sf::Time delta);
-
+private:
+    virtual void atualizaAtual(sf::Time delta);
 };
 
 #endif // ENTIDADE_H

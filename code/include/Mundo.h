@@ -47,6 +47,7 @@ private:
     sf::Vector2f						viewCenter;
     float								scrollSpeed;
 
+    //sf::Texture background[5];
     sf::Texture test;
     sf::Texture test2;
 };

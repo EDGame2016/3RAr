@@ -6,7 +6,9 @@
 #include <SFML/Graphics.hpp>
 
 #include <toString.h>
+
 #include "Mundo.h"
+#include "Menu.h"
 
 class JogoAr
 {
@@ -30,6 +32,9 @@ private:
 
     sf::RenderWindow        tela;
     Mundo                   mundoDoJogo;
+    Menu                    mainMenu;
+    bool state;
+
 };
 
 #endif // JOGOAR_H

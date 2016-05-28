@@ -1,0 +1,2 @@
+Botões  =>  325px X 100px
+Icones da Arvore  =>  80px X 80px
