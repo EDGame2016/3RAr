@@ -103,11 +103,11 @@ void Mundo::constroiCena()
     }
 
 
-    sf::FloatRect back1(0.f, 0.f, mundoView.getSize().x, 2147.676);
-    sf::FloatRect back2(0.f, 0.f, mundoView.getSize().x, 2159.673);
-    sf::FloatRect back3(0.f, 0.f, mundoView.getSize().x, 1439.782);
-    sf::FloatRect back4(0.f, 0.f, mundoView.getSize().x, 1439.782);
-    sf::FloatRect back5(0.f, 0.f, mundoView.getSize().x, 813.087);
+    sf::FloatRect back1(0.f, 0.f, mundoView.getSize().x, 2150);
+    sf::FloatRect back2(0.f, 0.f, mundoView.getSize().x, 2165);
+    sf::FloatRect back3(0.f, 0.f, mundoView.getSize().x, 1445);
+    sf::FloatRect back4(0.f, 0.f, mundoView.getSize().x, 1445);
+    sf::FloatRect back5(0.f, 0.f, mundoView.getSize().x, 815);
     sf::FloatRect back6(0.f, 0.f, mundoView.getSize().x, 360);
     sf::FloatRect back7(0.f, 0.f, mundoView.getSize().x, 360);
     sf::FloatRect back8(0.f, 0.f, mundoView.getSize().x, 360);
