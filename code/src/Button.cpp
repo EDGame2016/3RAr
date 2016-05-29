@@ -20,14 +20,15 @@ bool Button::isSelected(sf::RenderWindow& window)
         return false;
     }
 }
+
 bool Button::isPressed(sf::RenderWindow& window)
 {
     if(isSelected(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
         estado = false;
+
         return true;
     }
-
     else
     {
         return false;
@@ -37,7 +38,7 @@ bool Button::isPressed(sf::RenderWindow& window)
 
 sf::FloatRect Button::getBoundingRect() const
 {
-	return getWorldTransform().transformRect(deselected.getGlobalBounds());
+    return getWorldTransform().transformRect(deselected.getGlobalBounds());
 }
 
 bool Button::mouseIntersects(sf::RenderWindow& window)

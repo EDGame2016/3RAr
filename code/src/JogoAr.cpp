@@ -1,62 +1,64 @@
 #include "JogoAr.h"
-
+#include <iostream>
 const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
 
-JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "Test"), mundoDoJogo(tela), mainMenu(tela)
+JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "3R - Ar"), mundoDoJogo(tela), mainMenu(tela)
 {
-    state = false;
+    estado = false;
 }
 
 void JogoAr::run()
 {
-	sf::Clock clock;
-	sf::Time timeSinceLastUpdate = sf::Time::Zero;
+    sf::Clock clock;
+    sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
-	while (tela.isOpen())
-	{
-		sf::Time elapsedTime = clock.restart();
-		timeSinceLastUpdate += elapsedTime;
+    while (tela.isOpen())
+    {
+        sf::Time elapsedTime = clock.restart();
+        timeSinceLastUpdate += elapsedTime;
 
-		while (timeSinceLastUpdate > TimePerFrame)
-		{
-			timeSinceLastUpdate -= TimePerFrame;
+        while (timeSinceLastUpdate > TimePerFrame)
+        {
+            timeSinceLastUpdate -= TimePerFrame;
 
-			processaEventos();
-			atualiza(TimePerFrame);
+            processaEventos();
+            atualiza(TimePerFrame);
 
-		}
-		renderiza();
-	}
+        }
+        renderiza();
+    }
 }
 
 void JogoAr::processaEventos()
 {
-	sf::Event event;
-
-	while (tela.pollEvent(event))
-	{
-		switch (event.type)
-		{
-			case (sf::Event::KeyPressed):
-				playerInput(event.key.code, true);
-				break;
-
-			case sf::Event::KeyReleased:
-				playerInput(event.key.code, false);
-				break;
-
-			case sf::Event::Closed:
-				tela.close();
-				break;
-            default:
-                break;
-		}
-	}
+    sf::Event event;
+    if(!estado)
+    {
+        switch(mainMenu.processaEventos())
+        {
+        case(Menu::JOGAR):
+        {
+            estado = true;
+            break;
+        }
+        case(Menu::SAIR):
+        {
+            tela.close();
+            break;
+        }
+        default:
+            break;
+        }
+    }
+    else
+    {
+        mundoDoJogo.processaEventos();
+    }
 }
 
 void JogoAr::atualiza(sf::Time elapsedTime)
 {
-	if(state)
+    if(estado)
         mundoDoJogo.atualiza(elapsedTime);
     else
         mainMenu.atualiza(elapsedTime);
@@ -64,26 +66,29 @@ void JogoAr::atualiza(sf::Time elapsedTime)
 
 void JogoAr::renderiza()
 {
-	tela.clear(sf::Color(0,150,255,0));
+    tela.clear(sf::Color(255, 255, 255, 0));
 
-    if(state)
+    if(estado)
         mundoDoJogo.desenha();
     else
         mainMenu.desenha();
 
-	tela.setView(tela.getDefaultView());
-	tela.display();
+    tela.setView(tela.getDefaultView());
+    tela.display();
 }
 
 void JogoAr::playerInput(sf::Keyboard::Key key, bool isPressed)
 {
     switch(key)
     {
-    case sf::Keyboard::Q:
+    case (sf::Keyboard::Escape):
     {
-        state = !state;
+        if(!isPressed)
+            tela.close();
         break;
     }
+    default:
+        break;
     }
 }
 

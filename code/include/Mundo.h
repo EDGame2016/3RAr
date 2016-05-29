@@ -8,16 +8,22 @@
 
 #include "NodeCena.h"
 #include "SpriteNode.h"
-#include "Entidade.h"
+#include "Foguete.h"
 
 class Mundo
 {
 public:
+    enum Evento
+    {
+        NONE
+    };
 
-                                        Mundo(sf::RenderWindow& window);
+public:
+    Mundo(sf::RenderWindow& window);
     void								atualiza(sf::Time dt);
     void								desenha();
-
+    Evento                              processaEventos();
+    void                                playerInput(sf::Keyboard::Key key, bool isPressed);
 
 private:
     void								loadTexturas();
@@ -34,6 +40,36 @@ private:
         LayerCount
     };
 
+    enum BackgroundTexturas
+    {
+        Grama,
+        Troposfera,
+        Estratosfera,
+        Mesosfera,
+        Termosfera,
+        Exosfera,
+        T1,
+        T2,
+        T3,
+        T4,
+        BackTexturasCount
+    };
+
+    enum ObjetosTexturas
+    {
+        Nave,
+        Fogo1,
+        Fogo2,
+        ObjetosTexturasCount
+    };
+
+    enum Estados
+    {
+        PAUSADO,
+        JOGANDO,
+        INICIO
+    };
+
 
 private:
 
@@ -43,13 +79,16 @@ private:
     NodeCena							cenaTree;
     std::array<NodeCena*, LayerCount>	layersCena;
 
+    std::array<sf::Texture, BackTexturasCount> background;
+    std::array<sf::Texture, ObjetosTexturasCount> objetoText;
+
     sf::FloatRect						mundoBounds;
     sf::Vector2f						viewCenter;
     float								scrollSpeed;
 
-    //sf::Texture background[5];
-    sf::Texture test;
-    sf::Texture test2;
+    Foguete* player;
+    Estados estado;
+
 };
 
 #endif // MUNDO_H

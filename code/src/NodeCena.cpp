@@ -77,3 +77,8 @@ sf::FloatRect NodeCena::getBoundingRect() const
 {
 	return sf::FloatRect();
 }
+
+void NodeCena::setOriginCenter()
+{
+    this->setOrigin(this->getBoundingRect().width/2, this->getBoundingRect().height/2);
+}

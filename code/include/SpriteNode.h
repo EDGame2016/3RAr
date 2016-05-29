@@ -11,7 +11,8 @@ class SpriteNode : public NodeCena
 public:
     SpriteNode(const sf::Texture& texture);
     SpriteNode(const sf::Texture& texture, const sf::IntRect& textureRect);
-    sf::FloatRect getGlobalBounds();
+    void setOriginCenter();
+    virtual sf::FloatRect getBoundingRect() const;
 
 private:
     virtual void desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;

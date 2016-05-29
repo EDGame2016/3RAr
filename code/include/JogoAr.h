@@ -23,7 +23,6 @@ private:
     void                    processaEventos();
     void                    atualiza(sf::Time elapsedTime);
     void                    renderiza();
-
     void                    playerInput(sf::Keyboard::Key key, bool isPressed);
 
 private:
@@ -33,7 +32,7 @@ private:
     sf::RenderWindow        tela;
     Mundo                   mundoDoJogo;
     Menu                    mainMenu;
-    bool state;
+    bool                    estado;
 
 };
 

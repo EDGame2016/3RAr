@@ -760,23 +760,24 @@
 
 1461537631 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\resource.rc
 
-1464392195 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
+1464472487 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
 	"Entidade.h"
 
-1464392092 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
-	<NodeCena.h>
+1464472233 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
+	"NodeCena.h"
 
-1464410635 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
+1464440969 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
 	<SFML/Graphics/Drawable.hpp>
 	<vector>
 
-1464390374 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
+1464478921 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
 	"JogoAr.h"
+	<iostream>
 
-1464293754 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
+1464467737 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
@@ -784,13 +785,13 @@
 	"Mundo.h"
 	"Menu.h"
 
-1464388864 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
+1464468557 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<array>
 	"NodeCena.h"
 	"SpriteNode.h"
-	"Entidade.h"
+	"Foguete.h"
 
 1464143438 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\resourceholder.h
 	<map>
@@ -799,7 +800,7 @@
 	<stdexcept>
 	<cassert>
 
-1464410594 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
+1464441363 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/RenderTarget.hpp>
 	<NodeCena.h>
@@ -807,18 +808,18 @@
 1464143090 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
 	<sstream>
 
-1464390149 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
+1464475087 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
 	"Mundo.h"
 	<iostream>
 
-1464410222 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
+1464441059 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
 	"NodeCena.h"
 	<stdio.h>
 
 1464143952 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\resourceholder.cpp
 	"ResourceHolder.h"
 
-1464410140 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
+1464441370 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
 	"SpriteNode.h"
 
 1464143299 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
@@ -826,10 +827,10 @@
 
 1464266610 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\idresources.h
 
-1464276037 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\main.cpp
+1464296490 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\main.cpp
 	"JogoAr.h"
 
-1464292763 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
+1464471337 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
@@ -1218,74 +1219,81 @@
 1464146690 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
 	<sstream>
 
-1464305020 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
+1464472157 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<array>
 	"NodeCena.h"
 	"SpriteNode.h"
-	"Entidade.h"
+	"Foguete.h"
 
-1464278759 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
+1464444569 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
 	<SFML/Graphics/Drawable.hpp>
 	<vector>
 
-1464273478 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
-	<NodeCena.h>
+1464444963 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
 	<SFML/Graphics/Sprite.hpp>
-
-1464273689 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
+	<SFML/Graphics/RenderTarget.hpp>
 	<NodeCena.h>
+
+1464475833 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
+	"NodeCena.h"
 
 1461541231 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\resource.rc
 
-1464273701 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
+1464476087 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
 	"Entidade.h"
 
-1464292911 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
+1464482521 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
 	"JogoAr.h"
+	<iostream>
 
-1464288476 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
+1464478687 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
 	"Mundo.h"
 	<iostream>
 
-1464286892 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
+1464444659 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
 	"NodeCena.h"
 	<stdio.h>
 
-1464273519 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
+1464444970 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
 	"SpriteNode.h"
-	<SFML/Graphics/RenderTarget.hpp>
 
 1464146899 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
 	"toString.h"
 
-1464412380 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
+1464467581 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
 	"Menu.h"
 	<iostream>
 
-1464401004 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
+1464453552 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<array>
 	"NodeCena.h"
 	"SpriteNode.h"
-	"Entidade.h"
 	"Button.h"
 
-1464292062 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
+1464457152 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
+	<array>
+	"NodeCena.h"
+	"SpriteNode.h"
+	"Button.h"
 
-1464293532 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
+1464474364 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
 	"Foguete.h"
+	<iostream>
+	<math.h>
 
-1464399550 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
+1464469373 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
 	<SFML/Graphics/Sprite.hpp>
 	"Entidade.h"
+	"SpriteNode.h"
 
 1464293895 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\gui.cpp
 	"GUI.h"
@@ -1298,7 +1306,7 @@
 	<SFML/Window.hpp>
 	"NodeCena.h"
 
-1464412503 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\button.cpp
+1464443706 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\button.cpp
 	"Button.h"
 	<iostream>
 
@@ -1308,4 +1316,33 @@
 
 1464406592 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mouse.cpp
 	"Mouse.h"
+
+1464415869 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\button.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	"NodeCena.h"
+
+1464447306 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\button.cpp
+	"Button.h"
+	<iostream>
+
+1464477964 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
+	"Foguete.h"
+	<iostream>
+	<math.h>
+
+1464472973 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
+	<SFML/Graphics/Sprite.hpp>
+	"Entidade.h"
+	"SpriteNode.h"
+
+1464297495 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\gui.cpp
+	"GUI.h"
+
+1464297494 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\gui.h
+
+1464471181 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
+	"Menu.h"
+	<iostream>
 

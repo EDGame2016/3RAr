@@ -8,18 +8,27 @@
 
 #include "NodeCena.h"
 #include "SpriteNode.h"
-#include "Entidade.h"
 #include "Button.h"
 
 class Menu
 {
+
+public:
+
+    enum Evento
+    {
+        NONE,
+        JOGAR,
+        SAIR
+    };
+
 public:
 
     Menu(sf::RenderWindow& window);
 
     void atualiza(sf::Time dt);
     void desenha();
-
+    Evento processaEventos();
 
 private:
 
@@ -54,9 +63,13 @@ private:
     sf::RenderWindow& tela;
     NodeCena cenaTree;
     SpriteNode* logoSprite;
-    Button* jogar;
+
     std::array<NodeCena*, LayerCount> layersCena;
     std::array<sf::Texture, TexturaCount> texturas;
+
+    Button* jogar;
+    Button* sair;
+
 };
 
 #endif // MENU_H

@@ -1,2 +1,4 @@
 Botões  =>  325px X 100px
 Icones da Arvore  =>  80px X 80px
+Nave => 100px X 170px
+fogo da nave => 60px X 60px

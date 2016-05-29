@@ -5,6 +5,7 @@ Menu::Menu(sf::RenderWindow& window):
     cenaTree(),
     logoSprite(),
     jogar(),
+    sair(),
     layersCena(),
     texturas()
 {
@@ -14,12 +15,43 @@ Menu::Menu(sf::RenderWindow& window):
 void Menu::atualiza(sf::Time dt)
 {
     logoSprite->getFilhos()[0]->rotate(-dt.asSeconds());
+
     jogar->isPressed(tela);
+    sair->isPressed(tela);
 }
 void Menu::desenha()
 {
     tela.clear(sf::Color(255,255,255,0));
     tela.draw(cenaTree);
+}
+
+Menu::Evento Menu::processaEventos()
+{
+    sf::Event event;
+
+    while (tela.pollEvent(event))
+    {
+        switch (event.type)
+        {
+        case (sf::Event::MouseButtonReleased):
+        {
+            if(event.mouseButton.button == sf::Mouse::Left)
+            {
+                if(jogar->isSelected(tela))
+                    return JOGAR;
+                else if(sair->isSelected(tela))
+                    return SAIR;
+                else
+                    return NONE;
+            }
+            else
+                return NONE;
+        }
+        default:
+            return NONE;
+            break;
+        }
+    }
 }
 
 void Menu::loadTexturas()
@@ -41,6 +73,7 @@ void Menu::loadTexturas()
 
 void Menu::constroiCena()
 {
+    sf::Vector2f telaSize = tela.getDefaultView().getSize();
     int i;
 
     for (i = 0; i < LayerCount; i++)
@@ -59,24 +92,27 @@ void Menu::constroiCena()
     layersCena[Background]->insereFilho(backgroundSprite);
 
     logoSprite = new SpriteNode(texturas[Logo]);
-    logoSprite->setOrigin(logoSprite->getGlobalBounds().width/2, logoSprite->getGlobalBounds().height/2);
-    logoSprite->setPosition(backgroundSprite->getGlobalBounds().width/2,backgroundSprite->getGlobalBounds().height/2);
+    logoSprite->setOriginCenter();
+    logoSprite->setPosition(backgroundSprite->getBoundingRect().width/2, backgroundSprite->getBoundingRect().height/2);
     backgroundSprite->insereFilho(logoSprite);
 
     SpriteNode* elementosSprite(new SpriteNode(texturas[Elementos]));
-    elementosSprite->setOrigin(elementosSprite->getGlobalBounds().width/2, elementosSprite->getGlobalBounds().height/2);
-    elementosSprite->setPosition(logoSprite->getGlobalBounds().width/2,logoSprite->getGlobalBounds().height/2);
+    elementosSprite->setOriginCenter();
     logoSprite->insereFilho(elementosSprite);
 
     SpriteNode* tituloSprite(new SpriteNode(texturas[Titulo]));
-    tituloSprite->setOrigin(tituloSprite->getGlobalBounds().width/2, tituloSprite->getGlobalBounds().height/2);
     tituloSprite->setScale(0.5, 0.5);
-    tituloSprite->setPosition(1000, 200);
+    tituloSprite->setOriginCenter();
+    tituloSprite->setPosition(16*telaSize.x/20.f, 2.5*telaSize.y/10.f);
     layersCena[Background]->insereFilho(tituloSprite);
 
     jogar = new Button(texturas[JogarD], texturas[JogarS]);
-    jogar->setOrigin(jogar->getBoundingRect().width/2, jogar->getBoundingRect().height/2);
-    //jogar->setPosition(500.f, 500.f);
+    jogar->setPosition(16*telaSize.x/20.f, 6*telaSize.y/10.f);
+    jogar->setOriginCenter();
     jogar->setScale(0.5, 0.5);
     layersCena[Top]->insereFilho(jogar);
+
+    sair = new Button(texturas[SairD], texturas[SairS]);
+    sair->setPosition(0, 300.f);
+    jogar->insereFilho(sair);
 }

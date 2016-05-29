@@ -23,6 +23,7 @@ public:
     sf::Vector2f			getWorldPosition() const;
     sf::Transform			getWorldTransform() const;
     virtual sf::FloatRect	getBoundingRect() const;
+    virtual void            setOriginCenter();
 
 
 private:
@@ -35,7 +36,7 @@ private:
     void					desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
 
 
-private:
+protected:
     std::vector<NodeCena*>	filhos;
     NodeCena*				pai;
 };

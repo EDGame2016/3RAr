@@ -10,11 +10,17 @@ SpriteNode::SpriteNode(const sf::Texture& texture, const sf::IntRect& textureRec
 
 }
 
+void SpriteNode::setOriginCenter()
+{
+    sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height/2);
+}
+
 void SpriteNode::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(sprite, states);
 }
-sf::FloatRect SpriteNode::getGlobalBounds()
+
+sf::FloatRect SpriteNode::getBoundingRect() const
 {
-    return sprite.getGlobalBounds();
+	return sprite.getGlobalBounds();
 }
