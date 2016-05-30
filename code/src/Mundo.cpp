@@ -32,6 +32,7 @@ void Mundo::atualiza(sf::Time dt)
     // Apply movements
     if(estado == JOGANDO)
         cenaTree.atualiza(dt);
+
 }
 
 void Mundo::desenha()
@@ -66,6 +67,8 @@ Mundo::Evento Mundo::processaEventos()
         case (sf::Event::KeyPressed):
         {
             playerInput(event.key.code, true);
+            if(event.key.code == sf::Keyboard::Escape)
+                return PAUSA;
             break;
         }
 

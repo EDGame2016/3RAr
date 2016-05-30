@@ -15,7 +15,8 @@ class Mundo
 public:
     enum Evento
     {
-        NONE
+        NONE,
+        PAUSA
     };
 
 public:
@@ -30,7 +31,7 @@ private:
     void								constroiCena();
 
 
-private:
+public:
 
     enum Layer
     {
@@ -63,7 +64,7 @@ private:
         ObjetosTexturasCount
     };
 
-    enum Estados
+ public:   enum Estados
     {
         PAUSADO,
         JOGANDO,

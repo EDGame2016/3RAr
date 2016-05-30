@@ -7,6 +7,7 @@
 
 #include <toString.h>
 
+#include "Skills.h"
 #include "Mundo.h"
 #include "Menu.h"
 
@@ -32,7 +33,8 @@ private:
     sf::RenderWindow        tela;
     Mundo                   mundoDoJogo;
     Menu                    mainMenu;
-    bool                    estado;
+    Skills                  skills;
+    bool                    estado, pausado;
 
 };
 
