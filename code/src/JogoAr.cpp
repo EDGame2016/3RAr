@@ -2,9 +2,10 @@
 #include <iostream>
 const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
 
-JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "3R - Ar"), mundoDoJogo(tela), mainMenu(tela)
+JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "3R - Ar"), mundoDoJogo(tela), mainMenu(tela), skills(tela)
 {
     estado = false;
+    pausado = false;
 }
 
 void JogoAr::run()
@@ -49,17 +50,43 @@ void JogoAr::processaEventos()
         default:
             break;
         }
+
+
+        switch(skills.processaEventos())
+        {
+        case(Skills::JOGAR):
+        {
+            estado = true;
+            break;
+        }
+        case(Skills::SAIR):
+        {
+            tela.close();
+            break;
+        }
+        default:
+            break;
+        }
     }
     else
     {
-        mundoDoJogo.processaEventos();
+        Mundo::Evento est = mundoDoJogo.processaEventos();
+        if(est == Mundo::PAUSA)
+        {
+                pausado = true;
+                estado = false;
+        }
     }
-}
+
+   }
+
 
 void JogoAr::atualiza(sf::Time elapsedTime)
 {
     if(estado)
         mundoDoJogo.atualiza(elapsedTime);
+    else if(pausado)
+        skills.atualiza(elapsedTime);
     else
         mainMenu.atualiza(elapsedTime);
 }
@@ -70,6 +97,8 @@ void JogoAr::renderiza()
 
     if(estado)
         mundoDoJogo.desenha();
+    else if(pausado)
+        skills.desenha();
     else
         mainMenu.desenha();
 
@@ -83,8 +112,10 @@ void JogoAr::playerInput(sf::Keyboard::Key key, bool isPressed)
     {
     case (sf::Keyboard::Escape):
     {
-        if(!isPressed)
-            tela.close();
+        if(isPressed)
+           // tela.close();
+           pausado = true;
+           estado = false;
         break;
     }
     default:

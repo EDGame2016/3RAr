@@ -59,7 +59,6 @@
 			<Add library="sfml-main" />
 			<Add directory="SFML-2.3.2/lib" />
 		</Linker>
-		<Unit filename="include/Button.h" />
 		<Unit filename="include/Entidade.h" />
 		<Unit filename="include/Foguete.h" />
 		<Unit filename="include/GUI.h" />
@@ -67,7 +66,10 @@
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Mundo.h" />
 		<Unit filename="include/NodeCena.h" />
+		<Unit filename="include/Skills.h" />
+		<Unit filename="include/SkillsNode.h" />
 		<Unit filename="include/SpriteNode.h" />
+		<Unit filename="include/button.h" />
 		<Unit filename="include/toString.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="resource.rc">
@@ -81,6 +83,8 @@
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Mundo.cpp" />
 		<Unit filename="src/NodeCena.cpp" />
+		<Unit filename="src/Skills.cpp" />
+		<Unit filename="src/SkillsNode.cpp" />
 		<Unit filename="src/SpriteNode.cpp" />
 		<Unit filename="src/toString.cpp" />
 		<Extensions>
