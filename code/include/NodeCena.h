@@ -24,7 +24,7 @@ public:
     sf::Transform			getWorldTransform() const;
     virtual sf::FloatRect	getBoundingRect() const;
     virtual void            setOriginCenter();
-
+    void					desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
 
@@ -33,7 +33,7 @@ private:
 
     virtual void			draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void			desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
-    void					desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
+    //void					desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
 
 
 protected:

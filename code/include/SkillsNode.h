@@ -7,6 +7,7 @@
 
 #include "Entidade.h"
 #include "NodeCena.h"
+#include "SpriteNode.h"
 #include <cstdio>
 #include <stdio.h>
 
@@ -15,11 +16,10 @@
 class SkillsNode:public NodeCena
 {
     public:
-        SkillsNode(const sf::Texture&, const sf::Texture&, const sf::Texture&);
+        SkillsNode(const sf::Texture&, const sf::Texture&, const sf::Texture&, const sf::Texture&);
 
         sf::FloatRect   getBoundingRect() const;
         void            desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;
-        void            desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
 
         int             getAltura();
         bool            mouseIntersects(sf::RenderWindow& window);
@@ -30,9 +30,9 @@ class SkillsNode:public NodeCena
         SkillsNode*     Dir;
         SkillsNode*     Esq;
 
-        bool            status;
-        std::string          desc;
-        sf::Sprite      simbolo[3]; // status= false -> simbolo[0], status= true -> simbolo[1]
+        bool            status, desc;
+        sf::Sprite      simbolo[5]; // status= false -> simbolo[0], status= true -> simbolo[1]
+        void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
 #endif // SKILLSNODE_H

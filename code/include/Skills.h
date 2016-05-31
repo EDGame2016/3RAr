@@ -18,7 +18,13 @@ class Skills
 
         enum Textura
         {
-            Titulo,
+            DescNave,
+            DescCO2,
+            DescCometa,
+            DescGas,
+            DescShield,
+            DescSpeed,
+            DescSpray,
             JogarD,
             JogarS,
             SairD,
@@ -32,6 +38,8 @@ class Skills
             SkillShield,
             SkillSpeed,
             SkillSpray,
+            conectionLeft,
+            conectionRight,
             TexturaCount
         };
 
