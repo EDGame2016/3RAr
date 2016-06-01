@@ -2,7 +2,10 @@
 #include <iostream>
 const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
 
-JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "3R - Ar"), mundoDoJogo(tela), mainMenu(tela)
+JogoAr::JogoAr():
+    tela(sf::VideoMode(1280, 720), "3R - Ar"),
+    mundoDoJogo(tela),
+    mainMenu(tela)
 {
     estado = false;
 }
@@ -14,13 +17,11 @@ void JogoAr::run()
 
     while (tela.isOpen())
     {
-        sf::Time elapsedTime = clock.restart();
-        timeSinceLastUpdate += elapsedTime;
+        timeSinceLastUpdate += clock.restart();
 
         while (timeSinceLastUpdate > TimePerFrame)
         {
-            timeSinceLastUpdate -= TimePerFrame;
-
+            timeSinceLastUpdate = sf::Time::Zero;
             processaEventos();
             atualiza(TimePerFrame);
 
@@ -32,19 +33,19 @@ void JogoAr::run()
 void JogoAr::processaEventos()
 {
     sf::Event event;
+
     if(!estado)
     {
         switch(mainMenu.processaEventos())
         {
-        case(Menu::JOGAR):
-        {
-            estado = true;
-            break;
-        }
         case(Menu::SAIR):
         {
             tela.close();
             break;
+        }
+        case(Menu::JOGAR):
+        {
+            estado = true;
         }
         default:
             break;
@@ -52,7 +53,12 @@ void JogoAr::processaEventos()
     }
     else
     {
-        mundoDoJogo.processaEventos();
+        mainMenu.stopMusic();
+        if(mundoDoJogo.processaEventos() == Mundo::BACK)
+        {
+            estado = false;
+            mainMenu.playMusic();
+        }
     }
 }
 
@@ -83,7 +89,7 @@ void JogoAr::playerInput(sf::Keyboard::Key key, bool isPressed)
     {
     case (sf::Keyboard::Escape):
     {
-        if(!isPressed)
+        if(isPressed)
             tela.close();
         break;
     }

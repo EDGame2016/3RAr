@@ -760,35 +760,39 @@
 
 1461537631 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\resource.rc
 
-1464472487 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
+1464698099 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
 	"Entidade.h"
 
-1464472233 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
+1464698195 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
 	"NodeCena.h"
 
-1464440969 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
+1464716721 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
 	<SFML/Graphics/Drawable.hpp>
 	<vector>
 
-1464478921 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
+1464741762 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
 	"JogoAr.h"
 	<iostream>
 
-1464467737 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
+1464739413 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<toString.h>
+	"Skills.h"
 	"Mundo.h"
 	"Menu.h"
 
-1464468557 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
+1464739631 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<array>
+	"Collision.h"
+	"toString.h"
+	"Skills.h"
 	"NodeCena.h"
 	"SpriteNode.h"
 	"Foguete.h"
@@ -800,15 +804,15 @@
 	<stdexcept>
 	<cassert>
 
-1464441363 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
+1464699546 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/RenderTarget.hpp>
 	<NodeCena.h>
 
-1464143090 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
+1464703158 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
 	<sstream>
 
-1464475087 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
+1464741583 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
 	"Mundo.h"
 	<iostream>
 
@@ -819,10 +823,10 @@
 1464143952 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\resourceholder.cpp
 	"ResourceHolder.h"
 
-1464441370 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
+1464701595 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
 	"SpriteNode.h"
 
-1464143299 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
+1464703166 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
 	"toString.h"
 
 1464266610 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\idresources.h
@@ -830,11 +834,12 @@
 1464296490 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\main.cpp
 	"JogoAr.h"
 
-1464471337 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
+1464719846 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<toString.h>
+	"Skills.h"
 	"Mundo.h"
 	"Menu.h"
 
@@ -1216,42 +1221,44 @@
 	<string>
 	<vector>
 
-1464146690 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
+1464706758 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
 	<sstream>
 
-1464472157 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
+1464722548 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<array>
+	"Collision.h"
+	"toString.h"
 	"NodeCena.h"
 	"SpriteNode.h"
 	"Foguete.h"
 
-1464444569 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
+1464720321 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
 	<SFML/Graphics/Drawable.hpp>
 	<vector>
 
-1464444963 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
+1464703146 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\spritenode.h
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/Graphics/RenderTarget.hpp>
 	<NodeCena.h>
 
-1464475833 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
+1464701795 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
 	"NodeCena.h"
 
 1461541231 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\resource.rc
 
-1464476087 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
+1464701699 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
 	"Entidade.h"
 
-1464482521 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
+1464722200 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
 	"JogoAr.h"
 	<iostream>
 
-1464478687 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
+1464722563 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\mundo.cpp
 	"Mundo.h"
 	<iostream>
 
@@ -1259,39 +1266,43 @@
 	"NodeCena.h"
 	<stdio.h>
 
-1464444970 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
+1464705195 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\spritenode.cpp
 	"SpriteNode.h"
 
-1464146899 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
+1464706766 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
 	"toString.h"
 
-1464467581 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
+1464694206 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
 	"Menu.h"
 	<iostream>
 
-1464453552 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
+1464609680 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	<array>
 	"NodeCena.h"
 	"SpriteNode.h"
 	"Button.h"
 
-1464457152 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
+1464613280 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\menu.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	<array>
 	"NodeCena.h"
 	"SpriteNode.h"
 	"Button.h"
 
-1464474364 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
+1464705906 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
 	"Foguete.h"
 	<iostream>
 	<math.h>
 
-1464469373 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
+1464705890 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
 	<SFML/Graphics/Sprite.hpp>
+	<SFML/Audio.hpp>
+	<array>
 	"Entidade.h"
 	"SpriteNode.h"
 
@@ -1327,13 +1338,15 @@
 	"Button.h"
 	<iostream>
 
-1464477964 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
+1464709506 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
 	"Foguete.h"
 	<iostream>
 	<math.h>
 
-1464472973 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
+1464709490 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
 	<SFML/Graphics/Sprite.hpp>
+	<SFML/Audio.hpp>
+	<array>
 	"Entidade.h"
 	"SpriteNode.h"
 
@@ -1342,7 +1355,271 @@
 
 1464297494 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\gui.h
 
-1464471181 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
+1464697806 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
 	"Menu.h"
 	<iostream>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\inputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1436034025 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\alresource.hpp
+	<SFML/Audio/Export.hpp>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\outputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1436034025 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilefactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilefactory.inl
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilereader.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1429780453 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilewriter.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1464638674 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\collision.h
+
+1464639160 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\collision.cpp
+	<SFML\Graphics.hpp>
+	<map>
+	"Collision.h"
+
+1464742291 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\skills.h
+	"NodeCena.h"
+	"SpriteNode.h"
+	"Button.h"
+	"SkillsNode.h"
+
+1464743734 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\skillsnode.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	"Entidade.h"
+	"NodeCena.h"
+	"SpriteNode.h"
+	<stdio.h>
+
+1464743563 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skills.cpp
+	"Skills.h"
+
+1464743792 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skillsnode.cpp
+	"SkillsNode.h"
+	<iostream>
+
+1464719085 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\skills.h
+	"NodeCena.h"
+	"SpriteNode.h"
+	"Button.h"
+	"SkillsNode.h"
+
+1464719085 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\skillsnode.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<SFML/Window.hpp>
+	"Entidade.h"
+	"NodeCena.h"
+	"SpriteNode.h"
+	<cstdio>
+	<stdio.h>
+
+1464642274 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\collision.h
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\inputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1436037625 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\alresource.hpp
+	<SFML/Audio/Export.hpp>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\outputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1436037625 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilefactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilefactory.inl
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilereader.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1429784053 c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\audio\soundfilewriter.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1464642760 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\collision.cpp
+	<SFML\Graphics.hpp>
+	<map>
+	"Collision.h"
+
+1464719088 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skills.cpp
+	"Skills.h"
+
+1464719088 source:c:\users\migliatti\dropbox\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skillsnode.cpp
+	"SkillsNode.h"
 

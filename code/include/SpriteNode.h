@@ -9,15 +9,18 @@
 class SpriteNode : public NodeCena
 {
 public:
-    SpriteNode(const sf::Texture& texture);
-    SpriteNode(const sf::Texture& texture, const sf::IntRect& textureRect);
-    void setOriginCenter();
-    virtual sf::FloatRect getBoundingRect() const;
+                                SpriteNode(const sf::Texture& texture);
+                                SpriteNode(const sf::Texture& texture, const sf::IntRect& textureRect);
+    void                        setOriginCenter();
+    virtual sf::FloatRect       getBoundingRect() const;
+    sf::Sprite                  getSprite() const;
 
 private:
-    virtual void desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    virtual void                desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
-    sf::Sprite sprite;
+
+    sf::Sprite                  sprite;
 };
 
 #endif // BOOK_SPRITENODE_HPP

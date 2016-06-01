@@ -5,14 +5,18 @@
 Mundo::Mundo(sf::RenderWindow& window): tela(window),
     mundoView(window.getDefaultView()),
     cenaTree(),
+    skills(tela),
     layersCena(),
     background(),
     objetoText(),
+    nuvens(),
+    //sounds(),
     mundoBounds(0.f, 0.f, mundoView.getSize().x, 8000.f),
     viewCenter(mundoView.getSize().x / 2.f, mundoBounds.height - mundoView.getSize().y / 2.f),
     scrollSpeed(-200.f),
     player(),
-    estado(INICIO)
+    grama(),
+    estadoAtual(INICIO)
 {
     constroiCena();
     mundoView.setCenter(viewCenter);
@@ -20,63 +24,87 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
 
 void Mundo::atualiza(sf::Time dt)
 {
-    mundoView.setCenter(viewCenter.x,player->getPosition().y);
-
-    //Se o jogador tocar as bordas, inverte sua velocidade X
-    /*if (position.x <= mundoBounds.left || position.x >= mundoBounds.left + mundoBounds.width)
+    if(estadoAtual == JOGANDO)
     {
-        velocity.x = -velocity.x;
-        player->setVelocidade(velocity);
-    }*/
+        if(player->getPosition().y < viewCenter.y && player->getPosition().y > 360)
+        {
+            mundoView.setCenter(viewCenter.x,player->getPosition().y);
+        }
+        if(Collision::PixelPerfectTest(player->getSprite(), grama->getSprite(), 0))
+        {
+            player->setVelocidade(-2*player->getVelocidade());
+        }
 
-    // Apply movements
-    if(estado == JOGANDO)
+        //Se o jogador tocar as bordas, inverte sua direção
+        if((player->getPosition().x <= mundoBounds.left+50)||(player->getPosition().x >= mundoBounds.left + mundoBounds.width-50))
+        {
+            player->colidiuLateral();
+        }
         cenaTree.atualiza(dt);
+    }
+    else if(estadoAtual == PAUSADO)
+    {
+        skills.atualiza(dt);
+    }
+
 }
 
 void Mundo::desenha()
 {
-
-    tela.setView(mundoView);
-    tela.draw(cenaTree);
+    if(estadoAtual == JOGANDO || estadoAtual == INICIO)
+    {
+        tela.setView(mundoView);
+        tela.draw(cenaTree);
+    }
+    else if(estadoAtual == PAUSADO)
+    {
+        skills.desenha();
+    }
 }
 
 Mundo::Evento Mundo::processaEventos()
 {
     sf::Event event;
 
-    while (tela.pollEvent(event))
+    if(estadoAtual == JOGANDO || estadoAtual == INICIO)
     {
-        switch (event.type)
+        while (tela.pollEvent(event))
         {
-        /*case (sf::Event::MouseButtonReleased):
-        {
-            if(event.mouseButton.button == sf::Mouse::Left)
+            switch (event.type)
             {
-
+            case (sf::Event::Closed):
+            {
+                tela.close();
+                break;
             }
-            else
-                return NONE;
-        }*/
-        case (sf::Event::Closed):
-        {
-            tela.close();
-            break;
-        }
-        case (sf::Event::KeyPressed):
-        {
-            playerInput(event.key.code, true);
-            break;
-        }
+            case (sf::Event::KeyPressed):
+            {
+                playerInput(event.key.code, true);
+                if(event.key.code == sf::Keyboard::P)
+                    estadoAtual = PAUSADO;
+                break;
+            }
 
-        case sf::Event::KeyReleased:
-        {
-            playerInput(event.key.code, false);
-            break;
+            case sf::Event::KeyReleased:
+            {
+                playerInput(event.key.code, false);
+                break;
+            }
+            default:
+                break;
+            }
         }
-        default:
-            return NONE;
-            break;
+    }
+    else if(estadoAtual == PAUSADO)
+    {
+        Skills::Evento eventoAux = skills.processaEventos();
+        if(eventoAux == Skills::SAIR)
+        {
+            return BACK;
+        }
+        else if(eventoAux == Skills::JOGAR)
+        {
+            estadoAtual = INICIO;
         }
     }
 
@@ -90,33 +118,46 @@ void Mundo::playerInput(sf::Keyboard::Key key, bool isPressed)
     case (sf::Keyboard::Escape):
     {
         if(!isPressed)
-            estado = PAUSADO;
+            estadoAtual = PAUSADO;
         break;
     }
     case (sf::Keyboard::Right):
     {
-        player->moveDir();
+        if(estadoAtual == JOGANDO)
+            player->moveDir();
         break;
     }
     case (sf::Keyboard::Left):
     {
-        player->moveEsq();
+        if(estadoAtual == JOGANDO)
+            player->moveEsq();
         break;
     }
     case (sf::Keyboard::Space):
     {
-        if(estado == INICIO)
-            estado = JOGANDO;
+        if(estadoAtual == INICIO)
+            estadoAtual = JOGANDO;
     }
     default:
         break;
     }
 }
 
+void Mundo::setEstado(Mundo::Estados estado)
+{
+    this->estadoAtual = estado;
+}
+
+Mundo::Estados Mundo::getEstado()const
+{
+    return estadoAtual;
+}
+
 
 void Mundo::loadTexturas()
 {
-    background[Grama].loadFromFile("src/images/background/grama.png");
+    /*Texturas de Fundo*/
+    Collision::CreateTextureAndBitmask(background[Grama], "src/images/background/grama.png");
     background[Troposfera].loadFromFile("src/images/background/troposfera.png");
     background[T1].loadFromFile("src/images/background/t1.png");
     background[Estratosfera].loadFromFile("src/images/background/estratosfera.png");
@@ -127,7 +168,8 @@ void Mundo::loadTexturas()
     background[T4].loadFromFile("src/images/background/t4.png");
     background[Exosfera].loadFromFile("src/images/background/exosfera.png");
 
-    objetoText[Nave].loadFromFile("src/images/objetos/nave.png");
+    /*Texturas dos Objetos*/
+    Collision::CreateTextureAndBitmask(objetoText[Nave], "src/images/objetos/nave.png");
     objetoText[Fogo1].loadFromFile("src/images/objetos/fogo1.png");
     objetoText[Fogo2].loadFromFile("src/images/objetos/fogo2.png");
 
@@ -135,6 +177,17 @@ void Mundo::loadTexturas()
     {
         objetoText[i].setSmooth(true);
     }
+
+    /*Texturas das Nuvens*/
+    for(int i = 0; i < 8; i++)
+    {
+        nuvens[i].loadFromFile("src/images/objetos/nuvem"+toString(i+1)+".png");
+        nuvens[i].setSmooth(true);
+    }
+
+    /*Audios*/
+    //sounds.loadFromFile("src/sound/launch.wav");
+    //player->setSound(sounds);
 }
 
 void Mundo::constroiCena()
@@ -177,6 +230,10 @@ void Mundo::constroiCena()
 
 
     // Add the background sprite to the scene
+    SpriteNode* backgroundSprite(new SpriteNode(background[0], texturaRect));
+    backgroundSprite->setPosition(mundoBounds.left, 7300);
+    grama = backgroundSprite;
+    layersCena[MiddleBack]->insereFilho(backgroundSprite);
 
     SpriteNode* backgroundSprite1(new SpriteNode(background[1], texturaRect1));
     backgroundSprite1->setPosition(mundoBounds.left, 5852.324);
@@ -198,10 +255,6 @@ void Mundo::constroiCena()
     backgroundSprite5->setPosition(mundoBounds.left, mundoBounds.top);
     layersCena[Background]->insereFilho(backgroundSprite5);
 
-    SpriteNode* backgroundSprite(new SpriteNode(background[0], texturaRect));
-    backgroundSprite->setPosition(mundoBounds.left, 7300);
-    layersCena[Background]->insereFilho(backgroundSprite);
-
     SpriteNode* backgroundSprite6(new SpriteNode(background[6], texturaRect6));
     backgroundSprite6->setPosition(mundoBounds.left, 5852.324);
     layersCena[Background]->insereFilho(backgroundSprite6);
@@ -218,8 +271,7 @@ void Mundo::constroiCena()
     backgroundSprite9->setPosition(mundoBounds.left, 814);
     layersCena[Background]->insereFilho(backgroundSprite9);
 
-    player = new Foguete(objetoText[Nave]);
-    player->setPosition(viewCenter.x, viewCenter.y);
-    //player->setVelocidade(-200);
-    layersCena[Middle]->insereFilho(player);
+    player = new Foguete(objetoText[Nave], objetoText[Fogo1], objetoText[Fogo2]);
+    player->setPosition(viewCenter.x, viewCenter.y+200);
+    layersCena[MiddleTop]->insereFilho(player);
 }

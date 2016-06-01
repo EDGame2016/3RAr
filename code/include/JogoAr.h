@@ -7,6 +7,7 @@
 
 #include <toString.h>
 
+#include "Skills.h"
 #include "Mundo.h"
 #include "Menu.h"
 
@@ -33,7 +34,6 @@ private:
     Mundo                   mundoDoJogo;
     Menu                    mainMenu;
     bool                    estado;
-
 };
 
 #endif // JOGOAR_H
