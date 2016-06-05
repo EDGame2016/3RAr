@@ -10,7 +10,7 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
     background(),
     objetoText(),
     nuvens(),
-    //sounds(),
+    sounds(),
     mundoBounds(0.f, 0.f, mundoView.getSize().x, 8000.f),
     viewCenter(mundoView.getSize().x / 2.f, mundoBounds.height - mundoView.getSize().y / 2.f),
     scrollSpeed(-200.f),
@@ -41,11 +41,49 @@ void Mundo::atualiza(sf::Time dt)
             player->colidiuLateral();
         }
         cenaTree.atualiza(dt);
+        bateria->setCarga(player->getCarga());
     }
     else if(estadoAtual == PAUSADO)
     {
-        skills.atualiza(dt);
+        switch(skills.atualiza(dt))
+        {
+        case(SkillsNode::NAVE):
+            {
+                //implementar
+            }
+        case(SkillsNode::SHIELD):
+            {
+                //implementar
+                break;
+            }
+        case(SkillsNode::CO2):
+            {
+                //implementar
+                break;
+            }
+        case(SkillsNode::SPEED):
+            {
+                player->turbo = true;
+                break;
+            }
+        case(SkillsNode::GAS):
+            {
+                player->tCarga = 10;
+                break;
+            }
+        case(SkillsNode::SPRAY):
+            {
+                //implementar
+            }
+        case(SkillsNode::COMETA):
+            {
+                //implementar
+                break;
+            }
+        }
     }
+
+    bateria->setPosition(100, mundoView.getCenter().y - 300);
 
 }
 
@@ -100,11 +138,13 @@ Mundo::Evento Mundo::processaEventos()
         Skills::Evento eventoAux = skills.processaEventos();
         if(eventoAux == Skills::SAIR)
         {
+
+            abandona();
             return BACK;
         }
         else if(eventoAux == Skills::JOGAR)
         {
-            estadoAtual = INICIO;
+            reinicia();
         }
     }
 
@@ -153,6 +193,19 @@ Mundo::Estados Mundo::getEstado()const
     return estadoAtual;
 }
 
+void Mundo::reinicia()
+{
+    player->setPosition(viewCenter.x, viewCenter.y+200);
+    bateria->reinicia();
+    player->reinicia(bateria->getCarga());
+    mundoView.setCenter(viewCenter);
+    estadoAtual = INICIO;
+}
+void Mundo::abandona()
+{
+    reinicia();
+}
+
 
 void Mundo::loadTexturas()
 {
@@ -172,6 +225,8 @@ void Mundo::loadTexturas()
     Collision::CreateTextureAndBitmask(objetoText[Nave], "src/images/objetos/nave.png");
     objetoText[Fogo1].loadFromFile("src/images/objetos/fogo1.png");
     objetoText[Fogo2].loadFromFile("src/images/objetos/fogo2.png");
+    objetoText[BateriaCapa].loadFromFile("src/images/objetos/bateriaCapa.png");
+    objetoText[BateriaCelula].loadFromFile("src/images/objetos/bateriaCelula.png");
 
     for(int i = 0; i < ObjetosTexturasCount; i++)
     {
@@ -186,8 +241,7 @@ void Mundo::loadTexturas()
     }
 
     /*Audios*/
-    //sounds.loadFromFile("src/sound/launch.wav");
-    //player->setSound(sounds);
+    sounds[navePartindo].loadFromFile("src/sound/launch.wav");
 }
 
 void Mundo::constroiCena()
@@ -274,4 +328,9 @@ void Mundo::constroiCena()
     player = new Foguete(objetoText[Nave], objetoText[Fogo1], objetoText[Fogo2]);
     player->setPosition(viewCenter.x, viewCenter.y+200);
     layersCena[MiddleTop]->insereFilho(player);
+
+    bateria = new Bateria(objetoText[BateriaCapa], objetoText[BateriaCelula]);
+    layersCena[Top]->insereFilho(bateria);
+
+    player->setSound(sounds[navePartindo]);
 }

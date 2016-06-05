@@ -18,8 +18,8 @@ public:
 private:
 
     virtual void                desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
-public:
 
+private:
     sf::Sprite                  sprite;
 };
 

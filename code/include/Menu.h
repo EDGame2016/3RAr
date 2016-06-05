@@ -25,18 +25,18 @@ public:
 
 public:
 
-    Menu(sf::RenderWindow& window);
+                        Menu(sf::RenderWindow& window);
 
-    void atualiza(sf::Time dt);
-    Evento processaEventos();
-    void desenha();
-    void playMusic();
-    void stopMusic();
+    void                atualiza(sf::Time dt);
+    Evento              processaEventos();
+    void                desenha();
+    void                playMusic();
+    void                stopMusic();
 
 private:
 
-    void loadTexturas();
-    void constroiCena();
+    void                loadTexturas();
+    void                constroiCena();
 
 private:
 

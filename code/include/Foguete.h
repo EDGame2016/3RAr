@@ -13,21 +13,27 @@ class Foguete: public Entidade
 {
 public:
                                 Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf::Texture& fogo2);
-    virtual sf::FloatRect       getBoundingRect() const;
     void                        setSound(sf::SoundBuffer& buffer);
     void                        moveEsq();
     void                        moveDir();
     void                        colidiuLateral();
+    virtual sf::FloatRect       getBoundingRect() const;
     sf::Sprite                  getSprite() const;
+    int                         getCarga()const;
+    void                        reinicia(int);
+    bool                        turbo;
 
 private:
     void                        desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;
     void                        atualizaAtual(sf::Time dt);
 
+
 public:
     sf::Sprite                  sprite;
     std::array<sf::Sprite, 2>   fogo;
-    sf::Sound                   launchSound;
+    sf::Sound                   partidaSound;
+    int                         carga, tCarga;
+    sf::Time                    tempo;
 };
 
 #endif // FOGUETE_H

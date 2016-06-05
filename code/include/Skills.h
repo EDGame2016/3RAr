@@ -1,7 +1,6 @@
 #ifndef SKILLS_H
 #define SKILLS_H
 
-
 #include "NodeCena.h"
 #include "SpriteNode.h"
 #include "Button.h"
@@ -54,7 +53,7 @@ class Skills
 
                                             Skills(sf::RenderWindow& window);
                                             ~Skills();
-        void								atualiza(sf::Time dt);
+        int								atualiza(sf::Time dt);
         void								desenha();
         void                                constroiArvore(SkillsNode*, float, float);
         Evento                              processaEventos();

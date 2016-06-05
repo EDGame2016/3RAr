@@ -59,6 +59,7 @@
 			<Add library="sfml-main" />
 			<Add directory="SFML-2.3.2/lib" />
 		</Linker>
+		<Unit filename="include/Bateria.h" />
 		<Unit filename="include/Button.h" />
 		<Unit filename="include/Collision.h" />
 		<Unit filename="include/Entidade.h" />
@@ -75,6 +76,7 @@
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src/Bateria.cpp" />
 		<Unit filename="src/Button.cpp" />
 		<Unit filename="src/Collision.cpp" />
 		<Unit filename="src/Entidade.cpp" />

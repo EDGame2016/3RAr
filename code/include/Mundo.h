@@ -3,6 +3,7 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include <array>
 #include "Collision.h"
@@ -12,6 +13,7 @@
 #include "NodeCena.h"
 #include "SpriteNode.h"
 #include "Foguete.h"
+#include "Bateria.h"
 
 class Mundo
 {
@@ -37,6 +39,8 @@ public:
     void                                playerInput(sf::Keyboard::Key key, bool isPressed);
     void                                setEstado(Mundo::Estados estado);
     Estados                             getEstado()const;
+    void                                reinicia();
+    void                                abandona();
 
 private:
     void								loadTexturas();
@@ -78,12 +82,14 @@ private:
         Balao1,
         Balao2,
         Satelite,
+        BateriaCapa,
+        BateriaCelula,
         ObjetosTexturasCount
     };
 
     enum SoundFX
     {
-        Lauch,
+        navePartindo,
         SoundFXCount
     };
 private:
@@ -98,8 +104,7 @@ private:
     std::array<sf::Texture, BackTexturasCount>      background;
     std::array<sf::Texture, ObjetosTexturasCount>   objetoText;
     std::array<sf::Texture, 8>                      nuvens;
-    //std::array<sf::SoundBuffer, SoundFXCount>       sounds;
-    //sf::SoundBuffer sounds;
+    std::array<sf::SoundBuffer, SoundFXCount>       sounds;
 
     sf::FloatRect						            mundoBounds;
     sf::Vector2f						            viewCenter;
@@ -107,6 +112,8 @@ private:
 
     Foguete*                                        player;
     SpriteNode*                                     grama;
+
+    Bateria*                                        bateria;
     Estados                                         estadoAtual;
 
 };

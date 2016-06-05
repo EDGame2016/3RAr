@@ -1,23 +1,26 @@
 #include "SkillsNode.h"
 #include <iostream>
 
-SkillsNode::SkillsNode(const sf::Texture& desativado, const sf::Texture& ativado, const sf::Texture& desenho, const sf::Texture& desc):
+SkillsNode::SkillsNode(const sf::Texture& desativado, const sf::Texture& ativado, const sf::Texture& desenho, const sf::Texture& desc, int aprimoramento):
     simbolo()
 {
     simbolo[0].setTexture(desativado);
     simbolo[1].setTexture(ativado);
     simbolo[2].setTexture(desenho);
+
     this->Dir = NULL;
     this->Esq = NULL;
     this->status = false;
     this->setOriginCenter();
 
-    //SpriteNode *aux = new SpriteNode(desc);
+    SpriteNode *aux = new SpriteNode(desc);
 
-    //aux->setPosition(200.f,155.f);
-    //this->insereFilho(aux);
+    aux->setPosition(200.f,155.f);
+    this->insereFilho(aux);
 
-    //this->desc = false;
+    this->desc = false;
+
+    this->aprimoramento = aprimoramento;
 }
 
 SkillsNode::~SkillsNode()
@@ -42,12 +45,13 @@ void SkillsNode::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states)
     if(status)
     {
 
-        target.draw(simbolo[1], states);
         if(this->Dir != NULL && this->Esq !=  NULL)
         {
-                target.draw(simbolo[3], states);
-                target.draw(simbolo[4], states);
+            target.draw(simbolo[3], states);
+            target.draw(simbolo[4], states);
         }
+
+        target.draw(simbolo[1], states);
     }
     else
         target.draw(simbolo[0], states);
@@ -118,3 +122,6 @@ void SkillsNode::draw(sf::RenderTarget& target, sf::RenderStates states) const
     desenhaAtual(target, states);
     //desenhaFilhos(target, states);
 }
+
+
+

@@ -1,5 +1,4 @@
 #include "JogoAr.h"
-
 int main()
 {
     JogoAr jogo;
