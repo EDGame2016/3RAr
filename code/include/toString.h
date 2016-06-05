@@ -3,7 +3,7 @@
 
 #include <sstream>
 
-template <typename T>
-std::string toString(const T& value);
+//template <typename T>
+std::string toString(const int& value);
 
 #endif // TOSTRING_H

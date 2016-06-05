@@ -8,16 +8,24 @@
 #include "Entidade.h"
 #include "NodeCena.h"
 #include "SpriteNode.h"
-#include <cstdio>
+
 #include <stdio.h>
 
-
-
-class SkillsNode:public NodeCena
+class SkillsNode: public NodeCena
 {
     public:
-        SkillsNode(const sf::Texture&, const sf::Texture&, const sf::Texture&, const sf::Texture&);
-
+        enum Aprimoramento
+        {
+            NAVE,
+            SHIELD,
+            CO2,
+            SPEED,
+            GAS,
+            SPRAY,
+            COMETA
+        };
+                        SkillsNode(const sf::Texture&, const sf::Texture&, const sf::Texture&, const sf::Texture&, int);
+                        ~SkillsNode();
         sf::FloatRect   getBoundingRect() const;
         void            desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;
 
@@ -31,8 +39,9 @@ class SkillsNode:public NodeCena
         SkillsNode*     Esq;
 
         bool            status, desc;
-        sf::Sprite      simbolo[5]; // status= false -> simbolo[0], status= true -> simbolo[1]
+        std::array<sf::Sprite,5> simbolo; // status= false -> simbolo[0], status= true -> simbolo[1]
         void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        int             aprimoramento;
 };
 
 #endif // SKILLSNODE_H

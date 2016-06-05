@@ -7,16 +7,21 @@ class Entidade : public NodeCena
 {
 public:
     Entidade();
-    void                setVelocidade(float);
-    //void                setVelocidade(float, float);
+    void                setVelocidade(float velocidade);
+    void                setAceleracao(float aceleracao);
+    void                setDirecao(float x, float y);
+    float               getVelocidade() const;
+    float               getAceleracao()const;
     sf::Vector2f        getDirecao() const;
+    void                acelera(float value);
+    void                atualizaVelocidade();
+
     virtual void        atualizaAtual(sf::Time delta);
 
 private:
-//protected:    sf::Vector2f        velocidade;
-protected:
-    float velocidade;
-    sf::Vector2f direcao;
+    float               velocidade;
+    float               aceleracao;
+    sf::Vector2f        direcao;
 
 };
 

@@ -3,33 +3,48 @@
 Skills::Skills(sf::RenderWindow& window):
     tela(window),
     cenaTree(),
-    jogar(),
-    sair(),
     layersCena(),
     texturas(),
+    jogar(),
+    sair(),
     R()
 {
     constroiCena();
 }
 
-void Skills::atualiza(sf::Time dt)
+Skills::~Skills()
 {
+    delete R;
+}
+
+int Skills::atualiza(sf::Time dt)
+{
+    int aux = 0;
     jogar->isPressed(tela);
     sair->isPressed(tela);
 
-    R->isPressed(tela);
+    if(R->isPressed(tela))
+        aux = SkillsNode::NAVE;
 
-    R->Dir->isPressed(tela);
-    R->Esq->isPressed(tela);
+    if(R->Dir->isPressed(tela))
+        aux = SkillsNode::CO2;
+    if(R->Esq->isPressed(tela))
+        aux = SkillsNode::SHIELD;
 
-    R->Dir->Dir->isPressed(tela);
-    R->Dir->Esq->isPressed(tela);
+    if(R->Dir->Dir->isPressed(tela))
+        aux = SkillsNode::COMETA;
+    if(R->Dir->Esq->isPressed(tela))
+        aux = SkillsNode::SPRAY;
 
-    R->Esq->Dir->isPressed(tela);
-    R->Esq->Esq->isPressed(tela);
+    if(R->Esq->Dir->isPressed(tela))
+        aux = SkillsNode::GAS;
+    if(R->Esq->Esq->isPressed(tela))
+        aux = SkillsNode::SPEED;
 
 
     cenaTree.atualiza(dt);
+
+    return aux;
 }
 
 void Skills::desenha()
@@ -54,17 +69,14 @@ Skills::Evento Skills::processaEventos()
                     return JOGAR;
                 else if(sair->isSelected(tela))
                     return SAIR;
-                else
-                    return NONE;
             }
-            else
-                return NONE;
         }
         default:
-            return NONE;
             break;
         }
     }
+
+    return NONE;
 }
 
 void Skills::loadTexturas()
@@ -113,11 +125,11 @@ void Skills::constroiCena()
 
     loadTexturas();
 
-    SpriteNode* tituloSprite(new SpriteNode(texturas[SkillShield]));
+    /*SpriteNode* tituloSprite(new SpriteNode(texturas[SkillShield]));
     tituloSprite->setScale(0.5, 0.5);
     tituloSprite->setOriginCenter();
     tituloSprite->setPosition(16*telaSize.x/20.f, 2.5*telaSize.y/10.f);
-    layersCena[Background]->insereFilho(tituloSprite);
+    layersCena[Background]->insereFilho(tituloSprite);*/
 
     jogar = new Button(texturas[JogarD], texturas[JogarS]);
     jogar->setPosition(16*telaSize.x/20.f, 6*telaSize.y/10.f);
@@ -129,7 +141,7 @@ void Skills::constroiCena()
     sair->setPosition(0, 300.f);
     jogar->insereFilho(sair);
 
-    R = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillNave], texturas[DescNave]);
+    R = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillNave], texturas[DescNave], SkillsNode::NAVE);
     R->simbolo[3].setTexture(texturas[conectionLeft]);
     R->simbolo[3].setScale(1.55, 1.55);
     R->simbolo[3].setPosition(-240.f, 120.f);
@@ -138,7 +150,7 @@ void Skills::constroiCena()
     R->simbolo[4].setPosition(145.f, 120.f);
 
 
-    R->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillCO2], texturas[DescCO2]);
+    R->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillCO2], texturas[DescCO2], SkillsNode::CO2);
     R->Dir->simbolo[3].setTexture(texturas[conectionLeft]);
     R->Dir->simbolo[3].setScale(1.55, 1.55);
     R->Dir->simbolo[3].setPosition(-240.f, 165.f);
@@ -149,7 +161,7 @@ void Skills::constroiCena()
     R->Dir->simbolo[4].rotate(10);
 
 
-    R->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillShield], texturas[DescShield]);
+    R->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillShield], texturas[DescShield], SkillsNode::SHIELD);
     R->Esq->simbolo[3].setTexture(texturas[conectionLeft]);
     R->Esq->simbolo[3].setScale(1.55, 1.55);
     R->Esq->simbolo[3].setPosition(-240.f, 165.f);
@@ -159,28 +171,23 @@ void Skills::constroiCena()
     R->Esq->simbolo[4].setPosition(145.f, 120.f);
     R->Esq->simbolo[4].rotate(10);
 
-    R->Dir->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillCometa], texturas[DescCometa]);
-    R->Dir->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillSpray], texturas[DescSpray]);
+    R->Dir->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillCometa], texturas[DescCometa], SkillsNode::COMETA);
+    R->Dir->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillSpray], texturas[DescSpray], SkillsNode::SPRAY);
 
-    R->Esq->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillGas], texturas[DescGas]);
-    R->Esq->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillSpeed], texturas[DescSpeed]);
+    R->Esq->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillGas], texturas[DescGas], SkillsNode::GAS);
+    R->Esq->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillSpeed], texturas[DescSpeed], SkillsNode::SPEED);
 
     constroiArvore(R, 400.f, 100.f);
 }
 
 void Skills::constroiArvore(SkillsNode* R, float x, float y)
 {
-        R->setScale(0.6, 0.6);
-        R->setPosition(x,y);
-        layersCena[Top]->insereFilho(R);
+    R->setScale(0.6, 0.6);
+    R->setPosition(x,y);
+    layersCena[Top]->insereFilho(R);
     if(R->Dir != NULL && R->Esq != NULL)
     {
         constroiArvore(R->Dir,x+(100*R->getAltura()/1.5), y+200);
         constroiArvore(R->Esq,x-(100*R->getAltura()/1.5), y+200);
     }
-}
-
-Skills::~Skills()
-{
-    //dtor
 }

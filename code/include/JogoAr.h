@@ -33,9 +33,7 @@ private:
     sf::RenderWindow        tela;
     Mundo                   mundoDoJogo;
     Menu                    mainMenu;
-    Skills                  skills;
-    bool                    estado, pausado;
-
+    bool                    estado;
 };
 
 #endif // JOGOAR_H

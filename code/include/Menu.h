@@ -3,6 +3,7 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include <array>
 
@@ -24,16 +25,18 @@ public:
 
 public:
 
-    Menu(sf::RenderWindow& window);
+                        Menu(sf::RenderWindow& window);
 
-    void atualiza(sf::Time dt);
-    void desenha();
-    Evento processaEventos();
+    void                atualiza(sf::Time dt);
+    Evento              processaEventos();
+    void                desenha();
+    void                playMusic();
+    void                stopMusic();
 
 private:
 
-    void loadTexturas();
-    void constroiCena();
+    void                loadTexturas();
+    void                constroiCena();
 
 private:
 
@@ -63,6 +66,7 @@ private:
     sf::RenderWindow& tela;
     NodeCena cenaTree;
     SpriteNode* logoSprite;
+    sf::Music musica;
 
     std::array<NodeCena*, LayerCount> layersCena;
     std::array<sf::Texture, TexturaCount> texturas;

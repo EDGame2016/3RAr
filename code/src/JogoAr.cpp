@@ -2,10 +2,12 @@
 #include <iostream>
 const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
 
-JogoAr::JogoAr(): tela(sf::VideoMode(1280, 720), "3R - Ar"), mundoDoJogo(tela), mainMenu(tela), skills(tela)
+JogoAr::JogoAr():
+    tela(sf::VideoMode(1280, 720), "3R - Ar"),
+    mundoDoJogo(tela),
+    mainMenu(tela)
 {
     estado = false;
-    pausado = false;
 }
 
 void JogoAr::run()
@@ -15,13 +17,11 @@ void JogoAr::run()
 
     while (tela.isOpen())
     {
-        sf::Time elapsedTime = clock.restart();
-        timeSinceLastUpdate += elapsedTime;
+        timeSinceLastUpdate += clock.restart();
 
         while (timeSinceLastUpdate > TimePerFrame)
         {
-            timeSinceLastUpdate -= TimePerFrame;
-
+            timeSinceLastUpdate = sf::Time::Zero;
             processaEventos();
             atualiza(TimePerFrame);
 
@@ -33,36 +33,19 @@ void JogoAr::run()
 void JogoAr::processaEventos()
 {
     sf::Event event;
+
     if(!estado)
     {
         switch(mainMenu.processaEventos())
         {
-        case(Menu::JOGAR):
-        {
-            estado = true;
-            break;
-        }
         case(Menu::SAIR):
         {
             tela.close();
             break;
         }
-        default:
-            break;
-        }
-
-
-        switch(skills.processaEventos())
-        {
-        case(Skills::JOGAR):
+        case(Menu::JOGAR):
         {
             estado = true;
-            break;
-        }
-        case(Skills::SAIR):
-        {
-            tela.close();
-            break;
         }
         default:
             break;
@@ -70,23 +53,19 @@ void JogoAr::processaEventos()
     }
     else
     {
-        Mundo::Evento est = mundoDoJogo.processaEventos();
-        if(est == Mundo::PAUSA)
+        mainMenu.stopMusic();
+        if(mundoDoJogo.processaEventos() == Mundo::BACK)
         {
-                pausado = true;
-                estado = false;
+            estado = false;
+            mainMenu.playMusic();
         }
     }
-
-   }
-
+}
 
 void JogoAr::atualiza(sf::Time elapsedTime)
 {
     if(estado)
         mundoDoJogo.atualiza(elapsedTime);
-    else if(pausado)
-        skills.atualiza(elapsedTime);
     else
         mainMenu.atualiza(elapsedTime);
 }
@@ -97,8 +76,6 @@ void JogoAr::renderiza()
 
     if(estado)
         mundoDoJogo.desenha();
-    else if(pausado)
-        skills.desenha();
     else
         mainMenu.desenha();
 
@@ -113,9 +90,7 @@ void JogoAr::playerInput(sf::Keyboard::Key key, bool isPressed)
     case (sf::Keyboard::Escape):
     {
         if(isPressed)
-           // tela.close();
-           pausado = true;
-           estado = false;
+            tela.close();
         break;
     }
     default:
