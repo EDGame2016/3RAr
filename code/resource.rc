@@ -1,2 +1,0 @@
-#define ICON_NAME 0 // Identificador para o recurso ICON_NAME
-ICON_NAME ICON "icon.ico"
