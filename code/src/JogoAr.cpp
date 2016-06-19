@@ -1,5 +1,5 @@
 #include "JogoAr.h"
-#include <iostream>
+
 const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
 
 JogoAr::JogoAr():
@@ -19,21 +19,19 @@ void JogoAr::run()
     {
         timeSinceLastUpdate += clock.restart();
 
-        while (timeSinceLastUpdate > TimePerFrame)
+        if(timeSinceLastUpdate > TimePerFrame)
         {
             timeSinceLastUpdate = sf::Time::Zero;
             processaEventos();
             atualiza(TimePerFrame);
-
         }
+
         renderiza();
     }
 }
 
 void JogoAr::processaEventos()
 {
-    sf::Event event;
-
     if(!estado)
     {
         switch(mainMenu.processaEventos())
@@ -46,6 +44,8 @@ void JogoAr::processaEventos()
         case(Menu::JOGAR):
         {
             estado = true;
+            mainMenu.stopMusic();
+            break;
         }
         default:
             break;
@@ -53,7 +53,6 @@ void JogoAr::processaEventos()
     }
     else
     {
-        mainMenu.stopMusic();
         if(mundoDoJogo.processaEventos() == Mundo::BACK)
         {
             estado = false;

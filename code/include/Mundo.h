@@ -32,7 +32,7 @@ public:
     };
 
 public:
-    Mundo(sf::RenderWindow& window);
+                                        Mundo(sf::RenderWindow& window);
     void								atualiza(sf::Time dt);
     void								desenha();
     Evento                              processaEventos();

@@ -1,9 +1,9 @@
 #include "Entidade.h"
 
 Entidade::Entidade():
-    direcao(0,-1),
     velocidade(0.f),
-    aceleracao(0.f)
+    aceleracao(0.f),
+    direcao(0,-1)
 {
 
 }

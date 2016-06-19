@@ -2,7 +2,7 @@
 1465130488 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\main.cpp
 	"JogoAr.h"
 
-1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
+1466202450 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\jogoar.h
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
@@ -392,13 +392,13 @@
 1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\tostring.h
 	<sstream>
 
-1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\skills.h
+1466204654 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\skills.h
 	"NodeCena.h"
 	"SpriteNode.h"
 	"Button.h"
 	"SkillsNode.h"
 
-1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
+1466203569 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\nodecena.h
 	<SFML/System/NonCopyable.hpp>
 	<SFML/System/Time.hpp>
 	<SFML/Graphics/Transformable.hpp>
@@ -428,7 +428,7 @@
 1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\entidade.h
 	"NodeCena.h"
 
-1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
+1465325290 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\mundo.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
@@ -546,12 +546,11 @@
 
 1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\collision.h
 
-1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
-	<SFML/Graphics/Sprite.hpp>
+1466203779 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\foguete.h
+	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<array>
 	"Entidade.h"
-	"SpriteNode.h"
 
 1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\include\bateria.h
 	<SFML/Graphics.hpp>
@@ -580,19 +579,18 @@
 	<map>
 	"Collision.h"
 
-1465130488 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
+1466203020 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\entidade.cpp
 	"Entidade.h"
 
-1465130488 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
+1465172743 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\foguete.cpp
 	"Foguete.h"
 	<iostream>
 	<math.h>
 
-1465130488 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
+1466204204 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\jogoar.cpp
 	"JogoAr.h"
-	<iostream>
 
-1465130488 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
+1466203162 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\menu.cpp
 	"Menu.h"
 	<iostream>
 
@@ -600,12 +598,12 @@
 	"Mundo.h"
 	<iostream>
 
-1465130488 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
+1466203709 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\nodecena.cpp
 	"NodeCena.h"
-	<stdio.h>
 
-1465130489 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skills.cpp
+1466203965 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skills.cpp
 	"Skills.h"
+	<iostream>
 
 1465130489 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\skillsnode.cpp
 	"SkillsNode.h"
@@ -616,4 +614,6 @@
 
 1465130489 source:c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\src\tostring.cpp
 	"toString.h"
+
+1465130488 c:\users\felipe sampaio\dropbox\ufscar\bcc\3° semestre\ed\jogos\sfml projects\projeto_3r-ar\code\sfml-2.3.2\include\sfml\graphics
 

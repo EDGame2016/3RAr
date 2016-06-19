@@ -18,7 +18,6 @@ Foguete::Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf:
         fogo[i].setOrigin(fogo[i].getGlobalBounds().width/2, fogo[i].getGlobalBounds().height/2);
         fogo[i].setPosition(0,sprite.getGlobalBounds().top+sprite.getGlobalBounds().height+5);
     }
-    //SpriteNode* aux = new SpriteNode(fogo1);
 
     carga = 5;
     tCarga = 3;

@@ -1,13 +1,12 @@
 #ifndef FOGUETE_H
 #define FOGUETE_H
 
-#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
 #include <array>
 
 #include "Entidade.h"
-#include "SpriteNode.h"
 
 class Foguete: public Entidade
 {

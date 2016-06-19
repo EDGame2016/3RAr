@@ -5,10 +5,10 @@ Menu::Menu(sf::RenderWindow& window):
     cenaTree(),
     logoSprite(),
     musica(),
-    jogar(),
-    sair(),
     layersCena(),
-    texturas()
+    texturas(),
+    jogar(),
+    sair()
 {
     constroiCena();
 }
@@ -50,10 +50,11 @@ Menu::Evento Menu::processaEventos()
             break;
         }
         default:
-            return NONE;
             break;
         }
     }
+
+    return NONE;
 }
 
 void Menu::desenha()

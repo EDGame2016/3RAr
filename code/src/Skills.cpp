@@ -125,12 +125,6 @@ void Skills::constroiCena()
 
     loadTexturas();
 
-    /*SpriteNode* tituloSprite(new SpriteNode(texturas[SkillShield]));
-    tituloSprite->setScale(0.5, 0.5);
-    tituloSprite->setOriginCenter();
-    tituloSprite->setPosition(16*telaSize.x/20.f, 2.5*telaSize.y/10.f);
-    layersCena[Background]->insereFilho(tituloSprite);*/
-
     jogar = new Button(texturas[JogarD], texturas[JogarS]);
     jogar->setPosition(16*telaSize.x/20.f, 6*telaSize.y/10.f);
     jogar->setOriginCenter();

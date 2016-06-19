@@ -7,71 +7,71 @@
 #include "SkillsNode.h"
 class Skills
 {
-    public:
-        enum Evento
-        {
-            NONE,
-            JOGAR,
-            SAIR
-        };
+public:
+    enum Evento
+    {
+        NONE,
+        JOGAR,
+        SAIR
+    };
 
-        enum Textura
-        {
-            DescNave,
-            DescCO2,
-            DescCometa,
-            DescGas,
-            DescShield,
-            DescSpeed,
-            DescSpray,
-            JogarD,
-            JogarS,
-            SairD,
-            SairS,
-            SkillBack0,
-            SkillBack1,
-            SkillNave,
-            SkillCO2,
-            SkillCometa,
-            SkillGas,
-            SkillShield,
-            SkillSpeed,
-            SkillSpray,
-            conectionLeft,
-            conectionRight,
-            TexturaCount
-        };
+    enum Textura
+    {
+        DescNave,
+        DescCO2,
+        DescCometa,
+        DescGas,
+        DescShield,
+        DescSpeed,
+        DescSpray,
+        JogarD,
+        JogarS,
+        SairD,
+        SairS,
+        SkillBack0,
+        SkillBack1,
+        SkillNave,
+        SkillCO2,
+        SkillCometa,
+        SkillGas,
+        SkillShield,
+        SkillSpeed,
+        SkillSpray,
+        conectionLeft,
+        conectionRight,
+        TexturaCount
+    };
 
-        enum Layer
-        {
+    enum Layer
+    {
         Background,
         Middle,
         Top,
         LayerCount
-        };
+    };
 
 
-                                            Skills(sf::RenderWindow& window);
-                                            ~Skills();
-        int								atualiza(sf::Time dt);
-        void								desenha();
-        void                                constroiArvore(SkillsNode*, float, float);
-        Evento                              processaEventos();
+    Skills(sf::RenderWindow& window);
+    ~Skills();
+    int								    atualiza(sf::Time dt);
+    void								desenha();
+    void                                constroiArvore(SkillsNode*, float, float);
+    Evento                              processaEventos();
 
-    private:
+private:
 
-        void                                loadTexturas();
-        void                                constroiCena();
+    void                                loadTexturas();
+    void                                constroiCena();
 
-        sf::RenderWindow&                   tela;
-        NodeCena                            cenaTree;
-        std::array<NodeCena*, LayerCount>   layersCena;
-        std::array<sf::Texture, TexturaCount> texturas;
+    sf::RenderWindow&                   tela;
+    NodeCena                            cenaTree;
+    std::array<NodeCena*, LayerCount>   layersCena;
+    std::array<sf::Texture,TexturaCount>texturas;
 
-        Button* jogar;
-        Button* sair;
+    Button* jogar;
+    Button* sair;
 
-        SkillsNode* R;
+    SkillsNode* R;
 };
 
 #endif // SKILLS_H
