@@ -33,7 +33,6 @@ private:
 
     virtual void			draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void			desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
-    //void					desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
 
 
 protected:

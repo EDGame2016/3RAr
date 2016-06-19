@@ -4,6 +4,7 @@ Menu::Menu(sf::RenderWindow& window):
     tela(window),
     cenaTree(),
     logoSprite(),
+    musica(),
     jogar(),
     sair(),
     layersCena(),
@@ -18,11 +19,6 @@ void Menu::atualiza(sf::Time dt)
 
     jogar->isPressed(tela);
     sair->isPressed(tela);
-}
-void Menu::desenha()
-{
-    tela.clear(sf::Color(255,255,255,0));
-    tela.draw(cenaTree);
 }
 
 Menu::Evento Menu::processaEventos()
@@ -47,11 +43,32 @@ Menu::Evento Menu::processaEventos()
             else
                 return NONE;
         }
+        case (sf::Event::KeyPressed):
+        {
+            if(event.key.code == sf::Keyboard::Escape)
+                tela.close();
+            break;
+        }
         default:
             return NONE;
             break;
         }
     }
+}
+
+void Menu::desenha()
+{
+    tela.clear(sf::Color(255,255,255,0));
+    tela.draw(cenaTree);
+}
+
+void Menu::playMusic()
+{
+    musica.play();
+}
+void Menu::stopMusic()
+{
+    musica.stop();
 }
 
 void Menu::loadTexturas()
@@ -69,11 +86,15 @@ void Menu::loadTexturas()
     {
         texturas[i].setSmooth(true);
     }
+
+    musica.openFromFile("src/sound/mainMenu.ogg");
+    musica.setLoop(true);
 }
 
 void Menu::constroiCena()
 {
     sf::Vector2f telaSize = tela.getDefaultView().getSize();
+
     int i;
 
     for (i = 0; i < LayerCount; i++)
@@ -115,4 +136,6 @@ void Menu::constroiCena()
     sair = new Button(texturas[SairD], texturas[SairS]);
     sair->setPosition(0, 300.f);
     jogar->insereFilho(sair);
+
+    playMusic();
 }

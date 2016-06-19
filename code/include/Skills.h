@@ -1,7 +1,6 @@
 #ifndef SKILLS_H
 #define SKILLS_H
 
-
 #include "NodeCena.h"
 #include "SpriteNode.h"
 #include "Button.h"
@@ -52,21 +51,21 @@ class Skills
         };
 
 
-        Skills(sf::RenderWindow& window);
-        void								atualiza(sf::Time dt);
+                                            Skills(sf::RenderWindow& window);
+                                            ~Skills();
+        int								atualiza(sf::Time dt);
         void								desenha();
         void                                constroiArvore(SkillsNode*, float, float);
         Evento                              processaEventos();
-        virtual ~Skills();
 
     private:
 
-        void loadTexturas();
-        void constroiCena();
+        void                                loadTexturas();
+        void                                constroiCena();
 
-        sf::RenderWindow& tela;
-        NodeCena cenaTree;
-        std::array<NodeCena*, LayerCount> layersCena;
+        sf::RenderWindow&                   tela;
+        NodeCena                            cenaTree;
+        std::array<NodeCena*, LayerCount>   layersCena;
         std::array<sf::Texture, TexturaCount> texturas;
 
         Button* jogar;

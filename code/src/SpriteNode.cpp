@@ -24,3 +24,14 @@ sf::FloatRect SpriteNode::getBoundingRect() const
 {
 	return sprite.getGlobalBounds();
 }
+
+sf::Sprite SpriteNode::getSprite() const
+{
+    sf::Sprite aux;
+    aux = this->sprite;
+    aux.setScale(getScale());
+    aux.setPosition(this->getWorldPosition());
+    aux.setRotation(this->getRotation());
+
+    return aux;
+}
