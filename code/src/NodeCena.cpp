@@ -1,5 +1,5 @@
 #include "NodeCena.h"
-
+#include <iostream>
 NodeCena::NodeCena(): filhos(), pai(nullptr)
 {
 

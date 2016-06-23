@@ -6,7 +6,8 @@
 #include <SFML/Audio.hpp>
 
 #include <array>
-#include "Collision.h"
+#include <stdlib.h>
+#include <time.h>
 #include "toString.h"
 
 #include "Skills.h"
@@ -14,6 +15,8 @@
 #include "SpriteNode.h"
 #include "Foguete.h"
 #include "Bateria.h"
+#include "Objeto.h"
+#include "ObjetoHolder.h"
 
 class Mundo
 {
@@ -31,24 +34,7 @@ public:
         INICIO
     };
 
-public:
-                                        Mundo(sf::RenderWindow& window);
-    void								atualiza(sf::Time dt);
-    void								desenha();
-    Evento                              processaEventos();
-    void                                playerInput(sf::Keyboard::Key key, bool isPressed);
-    void                                setEstado(Mundo::Estados estado);
-    Estados                             getEstado()const;
-    void                                reinicia();
-    void                                abandona();
-
 private:
-    void								loadTexturas();
-    void								constroiCena();
-
-
-private:
-
     enum Layer
     {
         Background,
@@ -92,30 +78,49 @@ private:
         navePartindo,
         SoundFXCount
     };
+
+public:
+    Mundo(sf::RenderWindow& window);
+    void    atualiza(sf::Time dt);
+    void    desenha();
+    Evento  processaEventos();
+    void    playerInput(sf::Keyboard::Key key, bool isPressed);
+    Estados getEstado()const;
+    void    reinicia();
+    void    abandona();
+
 private:
+    bool    verificaColisao();
+    void    geraCamadas();
+    void    gerenciaObjetos();
+    void    loadTexturas();
+    void    constroiCena();
 
-    sf::RenderWindow&					            tela;
-    sf::View						                mundoView;
+private:
+    sf::RenderWindow&   tela;
+    sf::View            mundoView;
 
-    NodeCena							            cenaTree;
-    Skills                                          skills;
-    std::array<NodeCena*, LayerCount>	            layersCena;
+    NodeCena    cenaTree;
+    Skills      skills;
+
+    std::array<NodeCena*, LayerCount>       layersCena;
+    std::array<ObjetoHolder*, 5>            camadasAtm;
 
     std::array<sf::Texture, BackTexturasCount>      background;
     std::array<sf::Texture, ObjetosTexturasCount>   objetoText;
-    std::array<sf::Texture, 8>                      nuvens;
-    std::array<sf::SoundBuffer, SoundFXCount>       sounds;
+    std::array<sf::Texture, 8>                      nuvensText;
+    std::array<sf::SoundBuffer, SoundFXCount>       soundsBuffer;
 
-    sf::FloatRect						            mundoBounds;
-    sf::Vector2f						            viewCenter;
-    float								            scrollSpeed;
+    sf::FloatRect   mundoBounds;
+    sf::Vector2f    viewCenter;
+    float           scrollSpeed;
 
-    Foguete*                                        player;
-    SpriteNode*                                     grama;
+    /**Ajustar essa parte**/
+    Foguete*    player;
+    SpriteNode* grama;
 
-    Bateria*                                        bateria;
-    Estados                                         estadoAtual;
-
+    Bateria*    bateria;
+    Estados     estadoAtual;
 };
 
 #endif // MUNDO_H

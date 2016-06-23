@@ -11,20 +11,19 @@
 class Foguete: public Entidade
 {
 public:
-                                Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf::Texture& fogo2);
-    void                        setSound(sf::SoundBuffer& buffer);
-    void                        moveEsq();
-    void                        moveDir();
-    void                        colidiuLateral();
-    virtual sf::FloatRect       getBoundingRect() const;
-    sf::Sprite                  getSprite() const;
-    int                         getCarga()const;
-    void                        reinicia(int);
-    bool                        turbo;
+            Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf::Texture& fogo2);
+    void    setSound(sf::SoundBuffer& buffer);
+    void    moveEsq();
+    void    moveDir();
+    void    reinicia();
+    void    destroi();
+
+    virtual sf::FloatRect   getBoundingRect() const;
+    sf::Sprite              getSprite() const;
 
 private:
-    void                        desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;
-    void                        atualizaAtual(sf::Time dt);
+    void    desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;
+    void    atualizaAtual(sf::Time dt);
 
 
 public:
@@ -33,6 +32,7 @@ public:
     sf::Sound                   partidaSound;
     int                         carga, tCarga;
     sf::Time                    tempo;
+    bool                        turbo;
 };
 
 #endif // FOGUETE_H

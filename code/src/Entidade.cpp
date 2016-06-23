@@ -3,7 +3,7 @@
 Entidade::Entidade():
     velocidade(0.f),
     aceleracao(0.f),
-    direcao(0,-1)
+    direcao(0,0)
 {
 
 }

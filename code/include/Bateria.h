@@ -7,18 +7,19 @@
 class Bateria: public NodeCena
 {
 public:
-                                Bateria(const sf::Texture& capa, const sf::Texture& celula);
-    void                        setCarga(int carga);
-    void                        setPosition(float x, float y);
-    int                         getCarga();
-    int                        reinicia();
+            Bateria(const sf::Texture& capa, const sf::Texture& celula);
+    void    setCarga(int *carga);
+    void    setPosition(float x, float y);
+    int     getCarga();
+    int     reinicia();
 private:
-    void                        desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
+    void    desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
+    void    atualizaAtual(sf::Time dt);
 
 private:
-    int                         carga;
-    sf::Sprite                  capa;
-    sf::Sprite                  celula;
+    int *carga;
+    sf::Sprite  capa;
+    sf::Sprite  celula;
 };
 
 #endif // BATERIA_H

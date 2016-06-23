@@ -68,6 +68,8 @@
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Mundo.h" />
 		<Unit filename="include/NodeCena.h" />
+		<Unit filename="include/Objeto.h" />
+		<Unit filename="include/ObjetoHolder.h" />
 		<Unit filename="include/Skills.h" />
 		<Unit filename="include/SkillsNode.h" />
 		<Unit filename="include/SpriteNode.h" />
@@ -85,6 +87,8 @@
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Mundo.cpp" />
 		<Unit filename="src/NodeCena.cpp" />
+		<Unit filename="src/Objeto.cpp" />
+		<Unit filename="src/ObjetoHolder.cpp" />
 		<Unit filename="src/Skills.cpp" />
 		<Unit filename="src/SkillsNode.cpp" />
 		<Unit filename="src/SpriteNode.cpp" />
