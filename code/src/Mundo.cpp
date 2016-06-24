@@ -27,7 +27,7 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
 
 void Mundo::atualiza(sf::Time dt)
 {
-    if(estadoAtual == JOGANDO)
+    if(estadoAtual != PAUSADO)
     {
         if(player->getPosition().y < viewCenter.y && player->getPosition().y > 360)
         {
@@ -35,9 +35,12 @@ void Mundo::atualiza(sf::Time dt)
         }
 
         verificaColisao();
+        bateria->setPosition(100, mundoView.getCenter().y - 300);
+        gerenciaObjetos();
+        cenaTree.atualiza(dt);
     }
     /**Ajustar essa parte**/
-    else if(estadoAtual == PAUSADO)
+    else
     {
         switch(skills.atualiza(dt))
         {
@@ -76,11 +79,6 @@ void Mundo::atualiza(sf::Time dt)
         }
         }
     }
-
-    bateria->setPosition(100, mundoView.getCenter().y - 300);
-    gerenciaObjetos();
-
-    cenaTree.atualiza(dt);
 }
 
 void Mundo::desenha()
@@ -198,7 +196,7 @@ void Mundo::abandona()
 
 bool Mundo::verificaColisao()
 {
-    if(player->getPosition().y > 5850) /// Troposfera
+    if(player->getPosition().y > 5800) /// Troposfera
     {
         if(Collision::PixelPerfectTest(player->getSprite(), grama->getSprite(), 0))
         {
@@ -206,15 +204,15 @@ bool Mundo::verificaColisao()
         }
         camadasAtm[0]->verificaColisao(player);
     }
-    else if(player->getPosition().y > 3690) /// Estatosfera
+    else if(player->getPosition().y > 3600) /// Estatosfera
     {
 
     }
-    else if(player->getPosition().y > 2250) /// Mesosfera
+    else if(player->getPosition().y > 2200) /// Mesosfera
     {
 
     }
-    else if(player->getPosition().y > 815) /// Termosfera
+    else if(player->getPosition().y > 800) /// Termosfera
     {
 
     }
@@ -231,13 +229,14 @@ void Mundo::geraCamada(int camadaID)
     {
     case 0:
     {
-        for(int i = 0; i<50; i++)
+        for(int i = 0; i<40; i++)
         {
             Objeto* nuvem;
-            nuvem = new Objeto(Objeto::NUVEM, nuvensText[0]);
+            nuvem = new Objeto(Objeto::NUVEM, nuvensText[rand()%8]);
             nuvem->setPosition(rand()%1200, viewCenter.y - 100 - rand()%1700);
             nuvem->setScale(0.5,0.5);
             nuvem->setVelocidade(rand()%100 - 50);
+            nuvem->setColor(50,50,50,200);
             camadasAtm[0]->insereFilho(nuvem);
             layersCena[MiddleTop]->insereFilho(nuvem);
         }
