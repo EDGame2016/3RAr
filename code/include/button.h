@@ -19,7 +19,7 @@ private:
 
     virtual void			atualizaAtual(sf::Time delta);
     virtual void			desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
-    bool mouseIntersects(sf::RenderWindow& window);
+    bool                    mouseIntersects(sf::RenderWindow& window);
 
 private:
     sf::Sprite deselected;

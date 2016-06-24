@@ -3,12 +3,14 @@
 #include <math.h>
 
 #define PI 3.14
+#define WIDTH 1280
 
 Foguete::Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf::Texture& fogo2):
     sprite(foguete),
     fogo(),
     partidaSound(),
-    tempo()
+    tempo(),
+    estado(false)
 {
     sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height/2);
     fogo[0].setTexture(fogo1);
@@ -18,6 +20,8 @@ Foguete::Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf:
         fogo[i].setOrigin(fogo[i].getGlobalBounds().width/2, fogo[i].getGlobalBounds().height/2);
         fogo[i].setPosition(0,sprite.getGlobalBounds().top+sprite.getGlobalBounds().height+5);
     }
+
+    this->setDirecao(0,-1);
 
     carga = 5;
     tCarga = 3;
@@ -42,10 +46,20 @@ void Foguete::moveDir()
     setDirecao(sin(this->getRotation()*PI/180.f),-cos(this->getRotation()*PI/180.f));
 }
 
-void Foguete::colidiuLateral()
+void Foguete::reinicia()
 {
-    setDirecao(-getDirecao().x, getDirecao().y);
-    this->setRotation(-getRotation());
+    this->setRotation(0);
+    setDirecao(0,-1);
+    setVelocidade(0);
+    setAceleracao(0);
+    this->carga = 5;
+    setEstado(false);
+
+}
+
+void Foguete::destroi()
+{
+
 }
 
 sf::FloatRect Foguete::getBoundingRect() const
@@ -64,21 +78,10 @@ sf::Sprite Foguete::getSprite() const
     return aux;
 }
 
-int Foguete::getCarga() const
+void Foguete::setEstado(bool value)
 {
-    return carga;
+    this->estado = value;
 }
-
-void Foguete::reinicia(int carga)
-{
-    this->setRotation(0);
-    setDirecao(0,-1);
-    setVelocidade(0);
-    setAceleracao(0);
-    this->carga = carga;
-
-}
-
 
 void Foguete::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -91,31 +94,41 @@ void Foguete::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) co
 
 void Foguete::atualizaAtual(sf::Time dt)
 {
-    tempo += dt;
-    if(tempo.asSeconds()>tCarga)
+    if(this->estado == true)
     {
-        carga--;
-        tempo = sf::Time::Zero;
-    }
+        tempo += dt;
+        if(tempo.asSeconds()>tCarga)
+        {
+            carga--;
+            tempo = sf::Time::Zero;
+        }
 
-    if(getVelocidade() <= 100)
-    {
-        acelera(5*dt.asSeconds()/2);
-        atualizaVelocidade();
-    }
+        if(getVelocidade() <= 100)
+        {
+            acelera(5*dt.asSeconds()/2);
+            atualizaVelocidade();
+        }
+        else if (getVelocidade() > 100 && getVelocidade() < 300)
+        {
+            acelera(10*dt.asSeconds());
+            atualizaVelocidade();
+        }
+        /**else if(turbo && getVelocidade() < 500)
+        {
+            acelera(5*dt.asSeconds());
+            atualizaVelocidade();
+        }**/
 
-    else if (getVelocidade() > 100 && getVelocidade() < 300)
-    {
-        acelera(10*dt.asSeconds());
-        atualizaVelocidade();
+        sf::Vector2f position;
+        position.x = getVelocidade() * getDirecao().x * dt.asSeconds();
+        position.y = getVelocidade() * getDirecao().y * dt.asSeconds();
+        this->move(position);
+
+        //Se o jogador tocar as bordas da tela inverte sua direção
+        if((this->getPosition().x <= 10)||(this->getPosition().x >= WIDTH - 10))
+        {
+            setDirecao(-getDirecao().x, getDirecao().y);
+            this->setRotation(-getRotation());
+        }
     }
-    else if(turbo && getVelocidade() < 500)
-    {
-        acelera(5*dt.asSeconds());
-        atualizaVelocidade();
-    }
-    sf::Vector2f position;
-    position.x = getVelocidade()* getDirecao().x *dt.asSeconds();
-    position.y = getVelocidade()* getDirecao().y *dt.asSeconds();
-    this->move(position);
 }

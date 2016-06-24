@@ -1,31 +1,31 @@
 #include "JogoAr.h"
 
-const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/60.f);
+const sf::Time JogoAr::TimePerFrame = sf::seconds(1.f/90.f);
 
 JogoAr::JogoAr():
     tela(sf::VideoMode(1280, 720), "3R - Ar"),
     mundoDoJogo(tela),
     mainMenu(tela)
 {
-    estado = false;
+    tela.setFramerateLimit(120);
+    estado = false; //Inicia com o menu inicial
 }
 
 void JogoAr::run()
 {
-    sf::Clock clock;
-    sf::Time timeSinceLastUpdate = sf::Time::Zero;
+    sf::Clock clock; //Gerencia o tempo de execução
+    sf::Time timeSinceLastUpdate = sf::Time::Zero; //Gerencia o tempo desde que a ultima atualização foi realizada
 
     while (tela.isOpen())
     {
         timeSinceLastUpdate += clock.restart();
 
-        if(timeSinceLastUpdate > TimePerFrame)
+        if(timeSinceLastUpdate > TimePerFrame) //Controla a taxa de atualização do jogo em função do tempo
         {
             timeSinceLastUpdate = sf::Time::Zero;
             processaEventos();
             atualiza(TimePerFrame);
         }
-
         renderiza();
     }
 }
@@ -61,12 +61,12 @@ void JogoAr::processaEventos()
     }
 }
 
-void JogoAr::atualiza(sf::Time elapsedTime)
+void JogoAr::atualiza(sf::Time dt)
 {
     if(estado)
-        mundoDoJogo.atualiza(elapsedTime);
+        mundoDoJogo.atualiza(dt);
     else
-        mainMenu.atualiza(elapsedTime);
+        mainMenu.atualiza(dt);
 }
 
 void JogoAr::renderiza()

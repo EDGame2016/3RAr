@@ -5,8 +5,6 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include <toString.h>
-
 #include "Skills.h"
 #include "Mundo.h"
 #include "Menu.h"
@@ -14,26 +12,25 @@
 class JogoAr
 {
 public:
+    JogoAr();
+    void    run();
 
-                            JogoAr();
-    void                    run();
 
+private:
+    void    processaEventos();
+    void    atualiza(sf::Time dt);
+    void    renderiza();
+    void    playerInput(sf::Keyboard::Key key, bool isPressed);
 
 private:
 
-    void                    processaEventos();
-    void                    atualiza(sf::Time elapsedTime);
-    void                    renderiza();
-    void                    playerInput(sf::Keyboard::Key key, bool isPressed);
+    static const sf::Time   TimePerFrame;
 
-private:
+    sf::RenderWindow    tela;
 
-    static const sf::Time	TimePerFrame;
-
-    sf::RenderWindow        tela;
-    Mundo                   mundoDoJogo;
-    Menu                    mainMenu;
-    bool                    estado;
+    Mundo   mundoDoJogo;
+    Menu    mainMenu;
+    bool    estado; // false se está no menu inicial e true se está jogando
 };
 
 #endif // JOGOAR_H
