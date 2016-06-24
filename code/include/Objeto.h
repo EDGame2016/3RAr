@@ -18,6 +18,8 @@ public:
 public:
     Objeto(Tipo ID,const sf::Texture& textura);
     sf::Sprite  getSprite() const;
+    Tipo        getTipo();
+    void        setColor(int r, int g, int b, int a);
 
 private:
     void    desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;

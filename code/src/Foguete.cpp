@@ -9,7 +9,8 @@ Foguete::Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf:
     sprite(foguete),
     fogo(),
     partidaSound(),
-    tempo()
+    tempo(),
+    estado(false)
 {
     sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height/2);
     fogo[0].setTexture(fogo1);
@@ -52,6 +53,7 @@ void Foguete::reinicia()
     setVelocidade(0);
     setAceleracao(0);
     this->carga = 5;
+    setEstado(false);
 
 }
 
@@ -76,6 +78,11 @@ sf::Sprite Foguete::getSprite() const
     return aux;
 }
 
+void Foguete::setEstado(bool value)
+{
+    this->estado = value;
+}
+
 void Foguete::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(sprite, states);
@@ -87,38 +94,41 @@ void Foguete::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) co
 
 void Foguete::atualizaAtual(sf::Time dt)
 {
-    tempo += dt;
-    if(tempo.asSeconds()>tCarga)
+    if(this->estado == true)
     {
-        carga--;
-        tempo = sf::Time::Zero;
-    }
+        tempo += dt;
+        if(tempo.asSeconds()>tCarga)
+        {
+            carga--;
+            tempo = sf::Time::Zero;
+        }
 
-    if(getVelocidade() <= 100)
-    {
-        acelera(5*dt.asSeconds()/2);
-        atualizaVelocidade();
-    }
-    else if (getVelocidade() > 100 && getVelocidade() < 300)
-    {
-        acelera(10*dt.asSeconds());
-        atualizaVelocidade();
-    }
-    /**else if(turbo && getVelocidade() < 500)
-    {
-        acelera(5*dt.asSeconds());
-        atualizaVelocidade();
-    }**/
+        if(getVelocidade() <= 100)
+        {
+            acelera(5*dt.asSeconds()/2);
+            atualizaVelocidade();
+        }
+        else if (getVelocidade() > 100 && getVelocidade() < 300)
+        {
+            acelera(10*dt.asSeconds());
+            atualizaVelocidade();
+        }
+        /**else if(turbo && getVelocidade() < 500)
+        {
+            acelera(5*dt.asSeconds());
+            atualizaVelocidade();
+        }**/
 
-    sf::Vector2f position;
-    position.x = getVelocidade() * getDirecao().x * dt.asSeconds();
-    position.y = getVelocidade() * getDirecao().y * dt.asSeconds();
-    this->move(position);
+        sf::Vector2f position;
+        position.x = getVelocidade() * getDirecao().x * dt.asSeconds();
+        position.y = getVelocidade() * getDirecao().y * dt.asSeconds();
+        this->move(position);
 
-    //Se o jogador tocar as bordas da tela inverte sua direção
-    if((this->getPosition().x <= 10)||(this->getPosition().x >= WIDTH - 10))
-    {
-        setDirecao(-getDirecao().x, getDirecao().y);
-        this->setRotation(-getRotation());
+        //Se o jogador tocar as bordas da tela inverte sua direção
+        if((this->getPosition().x <= 10)||(this->getPosition().x >= WIDTH - 10))
+        {
+            setDirecao(-getDirecao().x, getDirecao().y);
+            this->setRotation(-getRotation());
+        }
     }
 }

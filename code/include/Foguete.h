@@ -20,6 +20,7 @@ public:
 
     virtual sf::FloatRect   getBoundingRect() const;
     sf::Sprite              getSprite() const;
+    void                    setEstado(bool);
 
 private:
     void    desenhaAtual(sf::RenderTarget&, sf::RenderStates) const;
@@ -33,6 +34,7 @@ public:
     int                         carga, tCarga;
     sf::Time                    tempo;
     bool                        turbo;
+    bool                        estado;
 };
 
 #endif // FOGUETE_H

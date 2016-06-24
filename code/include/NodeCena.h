@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <vector>
+#include <algorithm>
 
 
 class NodeCena : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
@@ -14,7 +15,7 @@ public:
     NodeCena();
 
     void					insereFilho(NodeCena* filho);
-    //NodeCena* 				retiraFilho(const NodeCena& node);
+    void					retiraFilho(const NodeCena& node);
     std::vector<NodeCena*>  getFilhos();
 
     void					atualiza(sf::Time delta);

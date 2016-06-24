@@ -26,11 +26,6 @@ void    Bateria::setPosition(float x, float y)
     this->celula.setPosition(x + 45, y);
 }
 
-int Bateria::getCarga()
-{
-    //return this->carga;
-}
-
 void Bateria::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(capa, states);
@@ -83,11 +78,5 @@ void Bateria::atualizaAtual(sf::Time dt)
         }
     }
 
-}
-
-int Bateria::reinicia()
-{
-    //this->setCarga(5);
-    //return this->carga;
 }
 

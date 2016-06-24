@@ -10,8 +10,7 @@ public:
             Bateria(const sf::Texture& capa, const sf::Texture& celula);
     void    setCarga(int *carga);
     void    setPosition(float x, float y);
-    int     getCarga();
-    int     reinicia();
+
 private:
     void    desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
     void    atualizaAtual(sf::Time dt);

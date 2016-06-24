@@ -29,18 +29,12 @@ void Mundo::atualiza(sf::Time dt)
 {
     if(estadoAtual == JOGANDO)
     {
-        camadasAtm[0]->verificaColisao(player);
         if(player->getPosition().y < viewCenter.y && player->getPosition().y > 360)
         {
             mundoView.setCenter(viewCenter.x,player->getPosition().y);
         }
-        verificaColisao();
 
-        /**Ajustar essa parte**/
-        if(Collision::PixelPerfectTest(player->getSprite(), grama->getSprite(), 0))
-        {
-            player->setVelocidade(-player->getVelocidade());
-        }
+        verificaColisao();
     }
     /**Ajustar essa parte**/
     else if(estadoAtual == PAUSADO)
@@ -175,7 +169,10 @@ void Mundo::playerInput(sf::Keyboard::Key key, bool isPressed)
     case (sf::Keyboard::Space):
     {
         if(estadoAtual == INICIO)
+        {
+            player->setEstado(true);
             estadoAtual = JOGANDO;
+        }
     }
     default:
         break;
@@ -201,39 +198,74 @@ void Mundo::abandona()
 
 bool Mundo::verificaColisao()
 {
-    /**Ajustar essa parte**/
+    if(player->getPosition().y > 5850) /// Troposfera
+    {
+        if(Collision::PixelPerfectTest(player->getSprite(), grama->getSprite(), 0))
+        {
+            player->setVelocidade(-350);
+        }
+        camadasAtm[0]->verificaColisao(player);
+    }
+    else if(player->getPosition().y > 3690) /// Estatosfera
+    {
+
+    }
+    else if(player->getPosition().y > 2250) /// Mesosfera
+    {
+
+    }
+    else if(player->getPosition().y > 815) /// Termosfera
+    {
+
+    }
+    else /// Exosfera
+    {
+
+    }
+
 }
 
-void Mundo::geraCamadas()
+void Mundo::geraCamada(int camadaID)
 {
-    /**Ajustar essa parte**/
-    // Inicializa as diferentes camadas da atmosfera
-    for (int i = 0; i < 5; i++)
+    switch(camadaID)
     {
-        ObjetoHolder* camada;
-        camada = new ObjetoHolder;
-        camadasAtm[i] = camada;
-    }
-
-    for(int i = 0; i<5; i++)
+    case 0:
     {
-        Objeto* nuvem;
-        nuvem = new Objeto(Objeto::NUVEM, nuvensText[0]);
-        nuvem->setPosition(rand()%1250, viewCenter.y-rand()%1000);
-        nuvem->setScale(0.5,0.5);
-        camadasAtm[i]->insereFilho(nuvem);
-        layersCena[MiddleTop]->insereFilho(camadasAtm[i]->getFilhos()[0]);
-    }
+        for(int i = 0; i<50; i++)
+        {
+            Objeto* nuvem;
+            nuvem = new Objeto(Objeto::NUVEM, nuvensText[0]);
+            nuvem->setPosition(rand()%1200, viewCenter.y - 100 - rand()%1700);
+            nuvem->setScale(0.5,0.5);
+            nuvem->setVelocidade(rand()%100 - 50);
+            camadasAtm[0]->insereFilho(nuvem);
+            layersCena[MiddleTop]->insereFilho(nuvem);
+        }
 
-    //layersCena[MiddleTop]->insereFilho(camadasAtm[0]->getFilhos()[0]);
+        break;
+    }
+    case 1:
+    {
+
+    }
+    }
+}
+
+void Mundo::destroiCamada(int camadaID)
+{
+    switch(camadaID)
+    {
+    case 0:
+    {
+
+        break;
+    }
+    }
 }
 
 void Mundo::gerenciaObjetos()
 {
-    /**Ajustar essa parte**/
-    std::vector<Objeto*> aux = camadasAtm[0]->getFilhos();
 
-    //layersCena[MiddleTop]->insereFilho(aux[0]);
 }
 
 void Mundo::loadTexturas()
@@ -267,7 +299,7 @@ void Mundo::loadTexturas()
     /*Texturas das Nuvens*/
     for(int i = 0; i < 8; i++)
     {
-        nuvensText[i].loadFromFile("src/images/objetos/nuvem"+toString(i+1)+".png");
+        Collision::CreateTextureAndBitmask(nuvensText[i], "src/images/objetos/nuvem"+toString(i+1)+".png");
         nuvensText[i].setSmooth(true);
     }
 
@@ -277,13 +309,21 @@ void Mundo::loadTexturas()
 
 void Mundo::constroiCena()
 {
-    // Inicializa as diferentes camadas (Layers)
+    // Inicializa as diferentes camadas de renderização
     for (int i = 0; i < LayerCount; i++)
     {
         NodeCena* layer;
         layer = new NodeCena;
         layersCena[i] = layer;
         cenaTree.insereFilho(layer);
+    }
+
+    // Inicializa as diferentes camadas da atmosfera
+    for (int i = 0; i < 5; i++)
+    {
+        ObjetoHolder* camada;
+        camada = new ObjetoHolder;
+        camadasAtm[i] = camada;
     }
 
     loadTexturas();
@@ -366,5 +406,5 @@ void Mundo::constroiCena()
     bateria->setCarga(&(player->carga));
     layersCena[Top]->insereFilho(bateria);
 
-    geraCamadas();
+    geraCamada(0);
 }

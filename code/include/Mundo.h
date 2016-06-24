@@ -91,7 +91,8 @@ public:
 
 private:
     bool    verificaColisao();
-    void    geraCamadas();
+    void    geraCamada(int camadaID);
+    void    destroiCamada(int camadaID);
     void    gerenciaObjetos();
     void    loadTexturas();
     void    constroiCena();

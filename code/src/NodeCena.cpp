@@ -1,5 +1,6 @@
 #include "NodeCena.h"
 #include <iostream>
+#include <cassert>
 NodeCena::NodeCena(): filhos(), pai(nullptr)
 {
 
@@ -9,6 +10,11 @@ void NodeCena::insereFilho(NodeCena* filho)
 {
     filho->pai = this;
     filhos.push_back(filho);
+}
+
+void NodeCena::retiraFilho(const NodeCena& node)
+{
+
 }
 
 std::vector<NodeCena*>  NodeCena::getFilhos()
@@ -69,7 +75,7 @@ sf::Transform NodeCena::getWorldTransform() const
 
 sf::FloatRect NodeCena::getBoundingRect() const
 {
-	return sf::FloatRect();
+    return sf::FloatRect();
 }
 
 void NodeCena::setOriginCenter()

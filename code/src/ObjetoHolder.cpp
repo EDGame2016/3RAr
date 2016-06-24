@@ -12,13 +12,15 @@ void ObjetoHolder::insereFilho(Objeto* filho)
 bool ObjetoHolder::verificaColisao(Foguete* player)
 {
     std::cout<<filhos.size()<<std::endl;
-    for(int i = 0; i<filhos.size(); i++)
+    for(unsigned int i = 0; i<filhos.size(); i++)
     {
         if(Collision::PixelPerfectTest(player->getSprite(), filhos[i]->getSprite()))
         {
             std::cout<<"Colide"<<std::endl;
+            return true;
         }
     }
+    return false;
 }
 
 std::vector<Objeto*> ObjetoHolder::getFilhos()const
