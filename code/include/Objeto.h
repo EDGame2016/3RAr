@@ -13,6 +13,7 @@ public:
         BALAO,
         COMETA,
         SATELITE,
+        OZONIO,
         NONE
     };
 

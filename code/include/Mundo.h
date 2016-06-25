@@ -15,6 +15,7 @@
 #include "SpriteNode.h"
 #include "Foguete.h"
 #include "Bateria.h"
+#include "Tela.h"
 #include "Objeto.h"
 #include "ObjetoHolder.h"
 
@@ -30,6 +31,7 @@ public:
     enum Estados
     {
         PAUSADO,
+        SKILL,
         JOGANDO,
         INICIO
     };
@@ -56,6 +58,7 @@ private:
         T2,
         T3,
         T4,
+        BAR,
         BackTexturasCount
     };
 
@@ -68,6 +71,8 @@ private:
         Balao1,
         Balao2,
         Satelite,
+        OzonioR,
+        OzonioB,
         BateriaCapa,
         BateriaCelula,
         ObjetosTexturasCount
@@ -91,7 +96,7 @@ public:
 
 private:
     void    geraCamada(int camadaID);
-    void    destroiCamada(int camadaID);
+    void    destroiCamadas();
     void    gerenciaObjetos();
     void    loadTexturas();
     void    constroiCena();
@@ -102,6 +107,7 @@ private:
 
     NodeCena    cenaTree;
     Skills      skills;
+    Tela        gerenciadorJanela;
 
     std::array<NodeCena*, LayerCount>               layersCena;
     std::array<ObjetoHolder*, 5>                    camadasAtm;
@@ -118,6 +124,7 @@ private:
 
     Foguete*    player;
     SpriteNode* grama;
+    SpriteNode* barra;
 
     Bateria*    bateria;
     Estados     estadoAtual;

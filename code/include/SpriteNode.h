@@ -14,6 +14,7 @@ public:
     void                        setOriginCenter();
     virtual sf::FloatRect       getBoundingRect() const;
     sf::Sprite                  getSprite() const;
+    void                        setTexture(const sf::Texture& texture);
 
 private:
 

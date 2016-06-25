@@ -1,11 +1,12 @@
 #include "Mundo.h"
 
-#include <iostream>
+//#include <iostream>
 
 Mundo::Mundo(sf::RenderWindow& window): tela(window),
     mundoView(window.getDefaultView()),
     cenaTree(),
     skills(tela),
+    gerenciadorJanela(tela),
     layersCena(),
     camadasAtm(),
     controlCamadas(),
@@ -18,6 +19,7 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
     scrollSpeed(-200.f),
     player(),
     grama(),
+    barra(),
     estadoAtual(INICIO)
 {
     srand(time(NULL));
@@ -28,7 +30,7 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
 
 void Mundo::atualiza(sf::Time dt)
 {
-    if(estadoAtual != PAUSADO)
+    if(estadoAtual == JOGANDO || estadoAtual == INICIO)
     {
         if(player->getPosition().y < viewCenter.y && player->getPosition().y > 360)
         {
@@ -36,48 +38,63 @@ void Mundo::atualiza(sf::Time dt)
         }
 
         gerenciaObjetos();
-        bateria->setPosition(90, mundoView.getCenter().y - 310);
-        gerenciaObjetos();
+
+        bateria->setPosition(60, mundoView.getCenter().y - 327);
+        barra->setPosition(0, mundoView.getCenter().y - 380);
         cenaTree.atualiza(dt);
+
+        if(player->dano < 0)
+        {
+            gerenciadorJanela.setCamada(player->getPosition().y);
+            estadoAtual = PAUSADO;
+            destroiCamadas();
+        }
     }
     /**Ajustar essa parte**/
     else
     {
-        switch(skills.atualiza(dt))
+        if(estadoAtual == PAUSADO)
         {
-        case(SkillsNode::NAVE):
-        {
-            //implementar
+            gerenciadorJanela.atualiza(dt);
         }
-        case(SkillsNode::SHIELD):
+        else
         {
-            //implementar
-            break;
-        }
-        case(SkillsNode::CO2):
-        {
-            //implementar
-            break;
-        }
-        case(SkillsNode::SPEED):
-        {
-            player->turbo = true;
-            break;
-        }
-        case(SkillsNode::GAS):
-        {
-            player->tCarga = 10;
-            break;
-        }
-        case(SkillsNode::SPRAY):
-        {
-            //implementar
-        }
-        case(SkillsNode::COMETA):
-        {
-            //implementar
-            break;
-        }
+            switch(skills.atualiza(dt))
+            {
+            case(SkillsNode::NAVE):
+            {
+                //implementar
+            }
+            case(SkillsNode::SHIELD):
+            {
+                //implementar
+                break;
+            }
+            case(SkillsNode::CO2):
+            {
+                //implementar
+                break;
+            }
+            case(SkillsNode::SPEED):
+            {
+                player->turbo = true;
+                break;
+            }
+            case(SkillsNode::GAS):
+            {
+                player->tCarga = 10;
+                break;
+            }
+            case(SkillsNode::SPRAY):
+            {
+                //implementar
+            }
+            case(SkillsNode::COMETA):
+            {
+                //implementar
+                break;
+            }
+            }
         }
     }
 }
@@ -89,9 +106,12 @@ void Mundo::desenha()
         tela.setView(mundoView);
         tela.draw(cenaTree);
     }
-    else if(estadoAtual == PAUSADO)
+    else
     {
-        skills.desenha();
+        if(estadoAtual == PAUSADO)
+            gerenciadorJanela.desenha();
+        else
+            skills.desenha();
     }
 }
 
@@ -125,18 +145,26 @@ Mundo::Evento Mundo::processaEventos()
             }
         }
     }
-    else if(estadoAtual == PAUSADO)
+    else
     {
-        Skills::Evento eventoAux = skills.processaEventos();
-
-        if(eventoAux == Skills::SAIR)
+        if(estadoAtual == PAUSADO)
         {
-            abandona();
-            return BACK;
+            if(gerenciadorJanela.processaEventos())
+                estadoAtual = SKILL;
         }
-        else if(eventoAux == Skills::JOGAR)
+        else
         {
-            reinicia();
+            Skills::Evento eventoAux = skills.processaEventos();
+
+            if(eventoAux == Skills::SAIR)
+            {
+                abandona();
+                return BACK;
+            }
+            else if(eventoAux == Skills::JOGAR)
+            {
+                reinicia();
+            }
         }
     }
 
@@ -150,7 +178,10 @@ void Mundo::playerInput(sf::Keyboard::Key key, bool isPressed)
     case (sf::Keyboard::Escape):
     {
         if(!isPressed)
+        {
             estadoAtual = PAUSADO;
+            gerenciadorJanela.setCamada(player->getPosition().y);
+        }
         break;
     }
     case (sf::Keyboard::Right):
@@ -188,6 +219,7 @@ void Mundo::reinicia()
     player->setPosition(viewCenter.x, viewCenter.y+200);
     player->reinicia();
     mundoView.setCenter(viewCenter);
+    controlCamadas.fill(false);
     estadoAtual = INICIO;
 }
 
@@ -218,7 +250,17 @@ void Mundo::geraCamada(int camadaID)
     }
     case 1: /// Estratosfera
     {
-        for(int i = 0; i<20; i++)
+        for(int i = 0; i<10; i++)
+        {
+            Objeto* balao;
+            balao = new Objeto(Objeto::BALAO, objetoText[Balao2]);
+            balao->setPosition(rand()%1200, 5800 - i*rand()%2000);
+            balao->setScale(0.5,0.5);
+            balao->setVelocidade(rand()%100 - 50);
+            camadasAtm[1]->insereFilho(balao);
+            layersCena[MiddleTop]->insereFilho(balao);
+        }
+        for(int i = 0; i<10; i++)
         {
             Objeto* balao;
             balao = new Objeto(Objeto::BALAO, objetoText[Balao1]);
@@ -228,6 +270,13 @@ void Mundo::geraCamada(int camadaID)
             camadasAtm[1]->insereFilho(balao);
             layersCena[MiddleTop]->insereFilho(balao);
         }
+
+        Objeto* ozonio;
+        ozonio = new Objeto(Objeto::OZONIO, objetoText[OzonioB]);
+        ozonio->setScale(0.5,0.5);
+        ozonio->setPosition(viewCenter.x,3700);
+        camadasAtm[1]->insereFilho(ozonio);
+        layersCena[MiddleTop]->insereFilho(ozonio);
 
         break;
     }
@@ -239,7 +288,7 @@ void Mundo::geraCamada(int camadaID)
             cometa = new Objeto(Objeto::COMETA, objetoText[Cometa]);
             cometa->setPosition(rand()%1200, 3700 - rand()%1400);
             cometa->setScale(0.5,0.5);
-            cometa->setVelocidade(50+rand()%100);
+            cometa->setVelocidade(100+rand()%500);
             camadasAtm[2]->insereFilho(cometa);
             layersCena[MiddleTop]->insereFilho(cometa);
         }
@@ -269,21 +318,18 @@ void Mundo::geraCamada(int camadaID)
     }
 }
 
-void Mundo::destroiCamada(int camadaID)
+void Mundo::destroiCamadas()
 {
-    switch(camadaID)
+    for (int i = 0; i < 5; i++)
     {
-    case 0:
-    {
+        camadasAtm[i]->esvaziaFilhos();
+    }
 
-        break;
-    }
-    }
+    layersCena[MiddleTop]->esvaziaFilhos();
 }
 
 void Mundo::gerenciaObjetos()
 {
-    std::cout<<player->dano<<std::endl;
     if(player->getPosition().y > 5800) /// Troposfera
     {
         if(controlCamadas[0] == false)
@@ -332,8 +378,6 @@ void Mundo::gerenciaObjetos()
     {
         camadasAtm[4]->verificaColisao(player);
     }
-
-
 }
 
 void Mundo::loadTexturas()
@@ -350,6 +394,7 @@ void Mundo::loadTexturas()
     background[Termosfera].loadFromFile("src/images/background/termosfera.png");
     background[T4].loadFromFile("src/images/background/t4.png");
     background[Exosfera].loadFromFile("src/images/background/exosfera.png");
+    background[BAR].loadFromFile("src/images/background/bar.png");
 
     /*Texturas dos Objetos*/
     Collision::CreateTextureAndBitmask(objetoText[Nave], "src/images/objetos/nave.png");
@@ -359,6 +404,8 @@ void Mundo::loadTexturas()
     Collision::CreateTextureAndBitmask(objetoText[Balao1], "src/images/objetos/balao1.png");
     Collision::CreateTextureAndBitmask(objetoText[Balao2], "src/images/objetos/balao2.png");
     Collision::CreateTextureAndBitmask(objetoText[Cometa], "src/images/objetos/cometa.png");
+    Collision::CreateTextureAndBitmask(objetoText[OzonioR], "src/images/objetos/ozonioR.png");
+    Collision::CreateTextureAndBitmask(objetoText[OzonioB], "src/images/objetos/ozonioB.png");
 
     objetoText[BateriaCapa].loadFromFile("src/images/objetos/bateriaCapa.png");
     objetoText[BateriaCelula].loadFromFile("src/images/objetos/bateriaCelula.png");
@@ -406,6 +453,8 @@ void Mundo::constroiCena()
     sf::FloatRect back4(0.f, 0.f, mundoView.getSize().x, 1445);
     sf::FloatRect back5(0.f, 0.f, mundoView.getSize().x, 815);
     sf::FloatRect back6(0.f, 0.f, mundoView.getSize().x, 360);
+    sf::FloatRect back7(0.f, 0.f, mundoView.getSize().x, 85);
+
 
     sf::IntRect texturaRect(mundoBounds);
     sf::IntRect texturaRect1(back1);
@@ -414,6 +463,7 @@ void Mundo::constroiCena()
     sf::IntRect texturaRect4(back4);
     sf::IntRect texturaRect5(back5);
     sf::IntRect texturaRect6(back6);
+    sf::IntRect texturaRect7(back7);
 
     background[0].setRepeated(false);
     background[1].setRepeated(true);
@@ -424,6 +474,7 @@ void Mundo::constroiCena()
     background[7].setRepeated(true);
     background[8].setRepeated(true);
     background[9].setRepeated(true);
+    background[10].setRepeated(true);
 
     SpriteNode* backgroundSprite(new SpriteNode(background[Grama], texturaRect));
     backgroundSprite->setPosition(mundoBounds.left, 7300);
@@ -473,7 +524,9 @@ void Mundo::constroiCena()
     /**Ajustar essa parte**/
     player->setSound(soundsBuffer[navePartindo]);
 
-    /**Ajustar essa parte**/
+    barra = new SpriteNode(background[BAR], texturaRect7);
+    layersCena[Top]->insereFilho(barra);
+
     bateria = new Bateria(objetoText[BateriaCapa], objetoText[BateriaCelula]);
     bateria->setCarga(&(player->carga));
     layersCena[Top]->insereFilho(bateria);

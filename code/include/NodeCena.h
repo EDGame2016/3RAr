@@ -15,7 +15,7 @@ public:
     NodeCena();
 
     void					insereFilho(NodeCena* filho);
-    void					retiraFilho(const NodeCena& node);
+    void					esvaziaFilhos();
     std::vector<NodeCena*>  getFilhos();
 
     void					atualiza(sf::Time delta);

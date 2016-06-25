@@ -1,5 +1,4 @@
 #include "Foguete.h"
-#include <iostream>
 #include <math.h>
 
 #define PI 3.14
@@ -66,7 +65,7 @@ void Foguete::colidiu(Objeto::Tipo objeto)
             isColliding = true;
         }
 
-        this->setVelocidade(100);
+        ///this->setVelocidade(100);
     }
 }
 
@@ -77,6 +76,7 @@ void Foguete::reinicia()
     setVelocidade(0);
     setAceleracao(0);
     this->carga = 5;
+    this->dano = 5;
     setEstado(false);
 
 }

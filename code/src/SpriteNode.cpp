@@ -35,3 +35,8 @@ sf::Sprite SpriteNode::getSprite() const
 
     return aux;
 }
+
+void SpriteNode::setTexture(const sf::Texture& texture)
+{
+    sprite.setTexture(texture);
+}

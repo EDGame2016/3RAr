@@ -1,5 +1,4 @@
 #include "NodeCena.h"
-#include <iostream>
 #include <cassert>
 NodeCena::NodeCena(): filhos(), pai(nullptr)
 {
@@ -12,9 +11,9 @@ void NodeCena::insereFilho(NodeCena* filho)
     filhos.push_back(filho);
 }
 
-void NodeCena::retiraFilho(const NodeCena& node)
+void NodeCena::esvaziaFilhos()
 {
-
+    this->filhos.erase(filhos.begin(),filhos.end());
 }
 
 std::vector<NodeCena*>  NodeCena::getFilhos()

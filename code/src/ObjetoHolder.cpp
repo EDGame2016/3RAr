@@ -9,9 +9,14 @@ void ObjetoHolder::insereFilho(Objeto* filho)
 {
     filhos.push_back(filho);
 }
+
+void ObjetoHolder::esvaziaFilhos()
+{
+    this->filhos.erase(filhos.begin(),filhos.end());
+}
+
 bool ObjetoHolder::verificaColisao(Foguete* player)
 {
-    std::cout<<filhos.size()<<std::endl;
     for(unsigned int i = 0; i<filhos.size(); i++)
     {
         if(Collision::PixelPerfectTest(player->getSprite(), filhos[i]->getSprite()))

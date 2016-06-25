@@ -6,13 +6,13 @@
 #include "Foguete.h"
 #include "Objeto.h"
 #include "Collision.h"
-#include <iostream>
 
 class ObjetoHolder
 {
 public:
     ObjetoHolder();
     void insereFilho(Objeto* filho);
+    void esvaziaFilhos();
     bool verificaColisao(Foguete*);
     std::vector<Objeto*> getFilhos()const;
 
