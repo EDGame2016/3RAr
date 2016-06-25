@@ -8,6 +8,7 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
     skills(tela),
     layersCena(),
     camadasAtm(),
+    controlCamadas(),
     background(),
     objetoText(),
     nuvensText(),
@@ -15,13 +16,13 @@ Mundo::Mundo(sf::RenderWindow& window): tela(window),
     mundoBounds(0.f, 0.f, mundoView.getSize().x, 8000.f),
     viewCenter(mundoView.getSize().x / 2.f, mundoBounds.height - mundoView.getSize().y / 2.f),
     scrollSpeed(-200.f),
-    /**Ajustar essa parte**/
     player(),
     grama(),
     estadoAtual(INICIO)
 {
     srand(time(NULL));
     constroiCena();
+    controlCamadas.fill(false);
     mundoView.setCenter(viewCenter);
 }
 
@@ -34,8 +35,8 @@ void Mundo::atualiza(sf::Time dt)
             mundoView.setCenter(viewCenter.x,player->getPosition().y);
         }
 
-        verificaColisao();
-        bateria->setPosition(100, mundoView.getCenter().y - 300);
+        gerenciaObjetos();
+        bateria->setPosition(90, mundoView.getCenter().y - 310);
         gerenciaObjetos();
         cenaTree.atualiza(dt);
     }
@@ -189,47 +190,19 @@ void Mundo::reinicia()
     mundoView.setCenter(viewCenter);
     estadoAtual = INICIO;
 }
+
 void Mundo::abandona()
 {
     reinicia();
-}
-
-bool Mundo::verificaColisao()
-{
-    if(player->getPosition().y > 5800) /// Troposfera
-    {
-        if(Collision::PixelPerfectTest(player->getSprite(), grama->getSprite(), 0))
-        {
-            player->setVelocidade(-350);
-        }
-        camadasAtm[0]->verificaColisao(player);
-    }
-    else if(player->getPosition().y > 3600) /// Estatosfera
-    {
-
-    }
-    else if(player->getPosition().y > 2200) /// Mesosfera
-    {
-
-    }
-    else if(player->getPosition().y > 800) /// Termosfera
-    {
-
-    }
-    else /// Exosfera
-    {
-
-    }
-
 }
 
 void Mundo::geraCamada(int camadaID)
 {
     switch(camadaID)
     {
-    case 0:
+    case 0: /// Troposfera
     {
-        for(int i = 0; i<40; i++)
+        for(int i = 0; i<30; i++)
         {
             Objeto* nuvem;
             nuvem = new Objeto(Objeto::NUVEM, nuvensText[rand()%8]);
@@ -243,7 +216,53 @@ void Mundo::geraCamada(int camadaID)
 
         break;
     }
-    case 1:
+    case 1: /// Estratosfera
+    {
+        for(int i = 0; i<20; i++)
+        {
+            Objeto* balao;
+            balao = new Objeto(Objeto::BALAO, objetoText[Balao1]);
+            balao->setPosition(rand()%1200, 5800 - rand()%2000);
+            balao->setScale(0.5,0.5);
+            balao->setVelocidade(rand()%100 - 50);
+            camadasAtm[1]->insereFilho(balao);
+            layersCena[MiddleTop]->insereFilho(balao);
+        }
+
+        break;
+    }
+    case 2: /// Mesosfera
+    {
+        for(int i = 0; i<10; i++)
+        {
+            Objeto* cometa;
+            cometa = new Objeto(Objeto::COMETA, objetoText[Cometa]);
+            cometa->setPosition(rand()%1200, 3700 - rand()%1400);
+            cometa->setScale(0.5,0.5);
+            cometa->setVelocidade(50+rand()%100);
+            camadasAtm[2]->insereFilho(cometa);
+            layersCena[MiddleTop]->insereFilho(cometa);
+        }
+
+        break;
+
+    }
+    case 3: /// Termosfera
+    {
+        for(int i = 0; i<5; i++)
+        {
+            Objeto* satelite;
+            satelite = new Objeto(Objeto::SATELITE, objetoText[Satelite]);
+            satelite->setPosition(rand()%1200, 2000 - rand()%1400);
+            satelite->setScale(0.5,0.5);
+            satelite->setVelocidade(rand()%100 - 50);
+            camadasAtm[3]->insereFilho(satelite);
+            layersCena[MiddleTop]->insereFilho(satelite);
+        }
+
+        break;
+    }
+    case 4: /// Exosfera
     {
 
     }
@@ -264,6 +283,56 @@ void Mundo::destroiCamada(int camadaID)
 
 void Mundo::gerenciaObjetos()
 {
+    std::cout<<player->dano<<std::endl;
+    if(player->getPosition().y > 5800) /// Troposfera
+    {
+        if(controlCamadas[0] == false)
+        {
+            geraCamada(0);
+            controlCamadas[0] = true;
+        }
+
+        if(Collision::PixelPerfectTest(player->getSprite(), grama->getSprite(), 0))
+        {
+            player->setVelocidade(-350);
+        }
+
+        camadasAtm[0]->verificaColisao(player);
+    }
+    else if(player->getPosition().y > 3600) /// Estatosfera
+    {
+        if(controlCamadas[1] == false)
+        {
+            geraCamada(1);
+            controlCamadas[1] = true;
+        }
+
+        camadasAtm[1]->verificaColisao(player);
+    }
+    else if(player->getPosition().y > 2200) /// Mesosfera
+    {
+        if(controlCamadas[2] == false)
+        {
+            geraCamada(2);
+            controlCamadas[2] = true;
+        }
+
+        camadasAtm[2]->verificaColisao(player);
+    }
+    else if(player->getPosition().y > 800) /// Termosfera
+    {
+        if(controlCamadas[3] == false)
+        {
+            geraCamada(3);
+            controlCamadas[3] = true;
+        }
+        camadasAtm[3]->verificaColisao(player);
+    }
+    else /// Exosfera
+    {
+        camadasAtm[4]->verificaColisao(player);
+    }
+
 
 }
 
@@ -283,10 +352,14 @@ void Mundo::loadTexturas()
     background[Exosfera].loadFromFile("src/images/background/exosfera.png");
 
     /*Texturas dos Objetos*/
-    /**Ajustar essa parte**/
     Collision::CreateTextureAndBitmask(objetoText[Nave], "src/images/objetos/nave.png");
     objetoText[Fogo1].loadFromFile("src/images/objetos/fogo1.png");
     objetoText[Fogo2].loadFromFile("src/images/objetos/fogo2.png");
+    Collision::CreateTextureAndBitmask(objetoText[Satelite], "src/images/objetos/satelite.png");
+    Collision::CreateTextureAndBitmask(objetoText[Balao1], "src/images/objetos/balao1.png");
+    Collision::CreateTextureAndBitmask(objetoText[Balao2], "src/images/objetos/balao2.png");
+    Collision::CreateTextureAndBitmask(objetoText[Cometa], "src/images/objetos/cometa.png");
+
     objetoText[BateriaCapa].loadFromFile("src/images/objetos/bateriaCapa.png");
     objetoText[BateriaCelula].loadFromFile("src/images/objetos/bateriaCelula.png");
 
@@ -404,6 +477,4 @@ void Mundo::constroiCena()
     bateria = new Bateria(objetoText[BateriaCapa], objetoText[BateriaCelula]);
     bateria->setCarga(&(player->carga));
     layersCena[Top]->insereFilho(bateria);
-
-    geraCamada(0);
 }

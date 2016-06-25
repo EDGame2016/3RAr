@@ -6,13 +6,10 @@ Bateria::Bateria(const sf::Texture& capaText, const sf::Texture& celulaText):cap
     capa.setOrigin(capa.getGlobalBounds().width/2, capa.getGlobalBounds().height/2);
     capa.setRotation(-90);
     capa.setScale(0.5, 0.5);
-
     celula.setOrigin(celula.getGlobalBounds().width/2, celula.getGlobalBounds().height/2);
     celula.setRotation(-90);
     celula.setScale(0.5, 0.5);
-    celula.setPosition(-90,0);
     celula.setColor(sf::Color(141, 200, 50));
-
 }
 
 void Bateria::setCarga(int *carga)

@@ -7,6 +7,7 @@
 #include <array>
 
 #include "Entidade.h"
+#include "Objeto.h"
 
 class Foguete: public Entidade
 {
@@ -15,6 +16,7 @@ public:
     void    setSound(sf::SoundBuffer& buffer);
     void    moveEsq();
     void    moveDir();
+    void    colidiu(Objeto::Tipo);
     void    reinicia();
     void    destroi();
 
@@ -32,9 +34,13 @@ public:
     std::array<sf::Sprite, 2>   fogo;
     sf::Sound                   partidaSound;
     int                         carga, tCarga;
+    int                         dano;
+
     sf::Time                    tempo;
+
     bool                        turbo;
     bool                        estado;
+    bool                        isColliding;
 };
 
 #endif // FOGUETE_H

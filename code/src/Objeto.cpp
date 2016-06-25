@@ -7,8 +7,15 @@ Objeto::Objeto(Tipo ID, const sf::Texture& textura):
 {
     sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height/2);
     this->ID = ID;
-    /**Ajustar essa parte**/
-    this->setDirecao(1,0);
+    if(this->ID == COMETA)
+    {
+        this->setRotation(-45);
+        this->setDirecao(-1,-1);
+    }
+    else
+    {
+        this->setDirecao(1,0);
+    }
 }
 
 sf::Sprite Objeto::getSprite() const
@@ -44,9 +51,21 @@ void Objeto::atualizaAtual(sf::Time dt)
     position.y = getVelocidade() * getDirecao().y * dt.asSeconds();
     this->move(position);
 
-    if((this->getPosition().x <= 10)||(this->getPosition().x >= WIDTH - 10))
+    if(this->ID == COMETA)
     {
-        setDirecao(-getDirecao().x, getDirecao().y);
-        this->setRotation(-getRotation());
+        if(getVelocidade() < 0)
+        {
+            this->setRotation(-this->getRotation());
+            this->setDirecao(-getDirecao().x,getDirecao().y);
+            this->setVelocidade(-getVelocidade());
+        }
+
+    }
+    if(this->ID != COMETA)
+    {
+        if((this->getPosition().x <= 10)||(this->getPosition().x >= WIDTH - 10))
+        {
+            setDirecao(-getDirecao().x, getDirecao().y);
+        }
     }
 }

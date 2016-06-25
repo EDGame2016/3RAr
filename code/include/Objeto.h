@@ -12,7 +12,8 @@ public:
         NUVEM,
         BALAO,
         COMETA,
-        SATELITE
+        SATELITE,
+        NONE
     };
 
 public:

@@ -16,10 +16,12 @@ bool ObjetoHolder::verificaColisao(Foguete* player)
     {
         if(Collision::PixelPerfectTest(player->getSprite(), filhos[i]->getSprite()))
         {
-            std::cout<<"Colide"<<std::endl;
+            player->colidiu(filhos[i]->getTipo());
             return true;
         }
     }
+
+    player->colidiu(Objeto::NONE);
     return false;
 }
 

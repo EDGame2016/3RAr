@@ -18,7 +18,7 @@ public:
 
     virtual void    atualizaAtual(sf::Time delta);
 
-private:
+protected:
     float           velocidade;
     float           aceleracao;
     sf::Vector2f    direcao;

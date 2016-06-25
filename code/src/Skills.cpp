@@ -49,7 +49,7 @@ int Skills::atualiza(sf::Time dt)
 
 void Skills::desenha()
 {
-    tela.clear(sf::Color(108,127,131,0));
+    tela.clear(sf::Color(77,77,77));
     tela.draw(cenaTree);
 }
 

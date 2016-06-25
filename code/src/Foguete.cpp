@@ -25,7 +25,9 @@ Foguete::Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf:
 
     carga = 5;
     tCarga = 3;
-    turbo=false;
+    dano = 5;
+    isColliding = false;
+    turbo = false;
     tempo = sf::Time::Zero;
 }
 
@@ -44,6 +46,28 @@ void Foguete::moveDir()
 {
     this->rotate(5);
     setDirecao(sin(this->getRotation()*PI/180.f),-cos(this->getRotation()*PI/180.f));
+}
+
+void Foguete::colidiu(Objeto::Tipo objeto)
+{
+    if(objeto == Objeto::NONE)
+    {
+        this->isColliding = false;
+    }
+    else
+    {
+        if(this->isColliding == false)
+        {
+            if(objeto == Objeto::NUVEM)
+            {
+
+            }
+            dano--;
+            isColliding = true;
+        }
+
+        this->setVelocidade(100);
+    }
 }
 
 void Foguete::reinicia()
@@ -124,7 +148,7 @@ void Foguete::atualizaAtual(sf::Time dt)
         position.y = getVelocidade() * getDirecao().y * dt.asSeconds();
         this->move(position);
 
-        //Se o jogador tocar as bordas da tela inverte sua direção
+        //Se o jogador tocar as bordas da tela inverte sua direcao
         if((this->getPosition().x <= 10)||(this->getPosition().x >= WIDTH - 10))
         {
             setDirecao(-getDirecao().x, getDirecao().y);

@@ -90,7 +90,6 @@ public:
     void    abandona();
 
 private:
-    bool    verificaColisao();
     void    geraCamada(int camadaID);
     void    destroiCamada(int camadaID);
     void    gerenciaObjetos();
@@ -104,8 +103,9 @@ private:
     NodeCena    cenaTree;
     Skills      skills;
 
-    std::array<NodeCena*, LayerCount>       layersCena;
-    std::array<ObjetoHolder*, 5>            camadasAtm;
+    std::array<NodeCena*, LayerCount>               layersCena;
+    std::array<ObjetoHolder*, 5>                    camadasAtm;
+    std::array<bool, 5>                             controlCamadas;
 
     std::array<sf::Texture, BackTexturasCount>      background;
     std::array<sf::Texture, ObjetosTexturasCount>   objetoText;
@@ -116,7 +116,6 @@ private:
     sf::Vector2f    viewCenter;
     float           scrollSpeed;
 
-    /**Ajustar essa parte**/
     Foguete*    player;
     SpriteNode* grama;
 
