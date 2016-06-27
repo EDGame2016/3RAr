@@ -14,26 +14,25 @@ class NodeCena : public sf::Transformable, public sf::Drawable, private sf::NonC
 public:
     NodeCena();
 
-    void					insereFilho(NodeCena* filho);
-    void					esvaziaFilhos();
+    void					          insereFilho(NodeCena* filho);
+    void					          esvaziaFilhos();
     std::vector<NodeCena*>  getFilhos();
 
-    void					atualiza(sf::Time delta);
+    void					          atualiza(sf::Time delta);
 
-    sf::Vector2f			getWorldPosition() const;
-    sf::Transform			getWorldTransform() const;
-    virtual sf::FloatRect	getBoundingRect() const;
+    sf::Vector2f			      getWorldPosition() const;
+    sf::Transform			      getWorldTransform() const;
+    virtual sf::FloatRect	  getBoundingRect() const;
     virtual void            setOriginCenter();
-    void					desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    void					          desenhaFilhos(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
+    virtual void			     atualizaAtual(sf::Time delta);
+    void					         atualizaFihos(sf::Time delta);
 
-    virtual void			atualizaAtual(sf::Time delta);
-    void					atualizaFihos(sf::Time delta);
-
-    virtual void			draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void			desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
-
+    virtual void			     draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void			     desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const;
 
 protected:
     std::vector<NodeCena*>	filhos;

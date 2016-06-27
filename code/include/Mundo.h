@@ -59,6 +59,7 @@ private:
         T2,
         T3,
         T4,
+        TEXTO,
         BAR,
         BackTexturasCount
     };
