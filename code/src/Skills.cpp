@@ -1,4 +1,5 @@
 #include "Skills.h"
+#include <iostream>
 
 Skills::Skills(sf::RenderWindow& window):
     tela(window),
@@ -17,31 +18,60 @@ Skills::~Skills()
     delete R;
 }
 
+void Skills::reinicia()
+{
+    R->Esq->status=false;
+    R->Dir->status=false;
+
+    R->Esq->Esq->status=false;
+    R->Esq->Dir->status=false;
+
+    R->Dir->Esq->status=false;
+    R->Dir->Dir->status=false;
+}
+
 int Skills::atualiza(sf::Time dt)
 {
     int aux = 0;
-    jogar->isPressed(tela);
+    if(jogar->isPressed(tela))
+        atualizacao = false;
     sair->isPressed(tela);
 
-    if(R->isPressed(tela))
+    if(R->status)
+    {
         aux = SkillsNode::NAVE;
-
-    if(R->Dir->isPressed(tela))
+        atualizacao = true;
+    }
+    if(R->Dir->status)
+    {
         aux = SkillsNode::CO2;
-    if(R->Esq->isPressed(tela))
+        atualizacao = true;
+    }
+    if(R->Esq->status)
+    {
         aux = SkillsNode::SHIELD;
-
-    if(R->Dir->Dir->isPressed(tela))
+        atualizacao = true;
+    }
+    if(R->Dir->Dir->status)
+    {
         aux = SkillsNode::COMETA;
-    if(R->Dir->Esq->isPressed(tela))
+        atualizacao = true;
+    }
+    if(R->Dir->Esq->status)
+    {
         aux = SkillsNode::SPRAY;
-
-    if(R->Esq->Dir->isPressed(tela))
+        atualizacao = true;
+    }
+    if(R->Esq->Dir->status)
+    {
         aux = SkillsNode::GAS;
-    if(R->Esq->Esq->isPressed(tela))
+        atualizacao = true;
+    }
+    if(R->Esq->Esq->status)
+    {
         aux = SkillsNode::SPEED;
-
-
+        atualizacao = true;
+    }
     cenaTree.atualiza(dt);
 
     return aux;
@@ -125,14 +155,15 @@ void Skills::constroiCena()
 
     loadTexturas();
 
+
     jogar = new Button(texturas[JogarD], texturas[JogarS]);
-    jogar->setPosition(16*telaSize.x/20.f, 6*telaSize.y/10.f);
+    jogar->setPosition(5*telaSize.x/20, 18*telaSize.y/20);
     jogar->setOriginCenter();
     jogar->setScale(0.5, 0.5);
     layersCena[Top]->insereFilho(jogar);
 
     sair = new Button(texturas[SairD], texturas[SairS]);
-    sair->setPosition(0, 300.f);
+    sair->setPosition(telaSize.x, 0);
     jogar->insereFilho(sair);
 
     R = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillNave], texturas[DescNave], SkillsNode::NAVE);
@@ -142,6 +173,7 @@ void Skills::constroiCena()
     R->simbolo[4].setTexture(texturas[conectionRight]);
     R->simbolo[4].setScale(1.55, 1.55);
     R->simbolo[4].setPosition(145.f, 120.f);
+    R->status = true;
 
 
     R->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillCO2], texturas[DescCO2], SkillsNode::CO2);
@@ -153,7 +185,7 @@ void Skills::constroiCena()
     R->Dir->simbolo[4].setScale(1.55, 1.55);
     R->Dir->simbolo[4].setPosition(145.f, 120.f);
     R->Dir->simbolo[4].rotate(10);
-
+    R->Dir->status = false;
 
     R->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillShield], texturas[DescShield], SkillsNode::SHIELD);
     R->Esq->simbolo[3].setTexture(texturas[conectionLeft]);
@@ -164,14 +196,19 @@ void Skills::constroiCena()
     R->Esq->simbolo[4].setScale(1.55, 1.55);
     R->Esq->simbolo[4].setPosition(145.f, 120.f);
     R->Esq->simbolo[4].rotate(10);
+    R->Esq->status = false;
 
     R->Dir->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillCometa], texturas[DescCometa], SkillsNode::COMETA);
+    R->Dir->Dir->status = false;
     R->Dir->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillSpray], texturas[DescSpray], SkillsNode::SPRAY);
+    R->Dir->Esq->status = false;
 
     R->Esq->Dir = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillGas], texturas[DescGas], SkillsNode::GAS);
+    R->Esq->Dir->status = false;
     R->Esq->Esq = new SkillsNode(texturas[SkillBack0], texturas[SkillBack1], texturas[SkillSpeed], texturas[DescSpeed], SkillsNode::SPEED);
+    R->Esq->Esq->status = false;
 
-    constroiArvore(R, 400.f, 100.f);
+    constroiArvore(R, telaSize.x/2, 2*telaSize.y/20 + 10);
 }
 
 void Skills::constroiArvore(SkillsNode* R, float x, float y)

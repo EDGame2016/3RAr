@@ -27,13 +27,16 @@ private:
 private:
 
     sf::RenderWindow&   tela;
-    NodeCena            cenaTree;
+    NodeCena            telaCamadas;
+    NodeCena            telaFinal;
 
     std::array<sf::Texture, 8>  texturas;
 
     SpriteNode*     icone;
     SpriteNode*     info;
     Button*         continuar;
+    Button*         continuarFinal;
+    bool            estado;
 };
 
 #endif // TELA_H

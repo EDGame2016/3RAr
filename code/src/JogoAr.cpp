@@ -45,6 +45,7 @@ void JogoAr::processaEventos()
         {
             estado = true;
             mainMenu.stopMusic();
+            mundoDoJogo.musicBack.play();
             break;
         }
         default:
@@ -55,6 +56,7 @@ void JogoAr::processaEventos()
     {
         if(mundoDoJogo.processaEventos() == Mundo::BACK)
         {
+            mundoDoJogo.musicBack.stop();
             estado = false;
             mainMenu.playMusic();
         }

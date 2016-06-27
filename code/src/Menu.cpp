@@ -1,5 +1,5 @@
 #include "Menu.h"
-
+#include <iostream>
 Menu::Menu(sf::RenderWindow& window):
     tela(window),
     cenaTree(),

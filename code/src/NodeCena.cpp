@@ -1,4 +1,5 @@
 #include "NodeCena.h"
+#include <iostream>
 #include <cassert>
 NodeCena::NodeCena(): filhos(), pai(nullptr)
 {

@@ -16,7 +16,6 @@ Objeto::Objeto(Tipo ID, const sf::Texture& textura):
     {
         if(this->ID == SATELITE)
             this->setRotation(45);
-
         this->setDirecao(1,0);
     }
 }

@@ -7,7 +7,7 @@
 class Bateria: public NodeCena
 {
 public:
-            Bateria(const sf::Texture& capa, const sf::Texture& celula);
+            Bateria(const sf::Texture& capa, const sf::Texture& celula, int ID);
     void    setCarga(int *carga);
     void    setPosition(float x, float y);
 
@@ -19,6 +19,7 @@ private:
     int *carga;
     sf::Sprite  capa;
     sf::Sprite  celula;
+    int ID;
 };
 
 #endif // BATERIA_H

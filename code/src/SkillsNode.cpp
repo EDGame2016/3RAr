@@ -89,7 +89,6 @@ bool SkillsNode::isPressed(sf::RenderWindow& window)
 {
     if(isSelected(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        status = true;
         return true;
     }
     else

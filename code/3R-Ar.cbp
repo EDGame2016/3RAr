@@ -60,7 +60,6 @@
 			<Add directory="SFML-2.3.2/lib" />
 		</Linker>
 		<Unit filename="include/Bateria.h" />
-		<Unit filename="include/Button.h" />
 		<Unit filename="include/Collision.h" />
 		<Unit filename="include/Entidade.h" />
 		<Unit filename="include/Foguete.h" />
@@ -73,6 +72,8 @@
 		<Unit filename="include/Skills.h" />
 		<Unit filename="include/SkillsNode.h" />
 		<Unit filename="include/SpriteNode.h" />
+		<Unit filename="include/Tela.h" />
+		<Unit filename="include/button.h" />
 		<Unit filename="include/toString.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="resource.rc">
@@ -92,6 +93,7 @@
 		<Unit filename="src/Skills.cpp" />
 		<Unit filename="src/SkillsNode.cpp" />
 		<Unit filename="src/SpriteNode.cpp" />
+		<Unit filename="src/Tela.cpp" />
 		<Unit filename="src/toString.cpp" />
 		<Extensions>
 			<code_completion />

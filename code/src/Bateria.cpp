@@ -1,15 +1,27 @@
 #include "Bateria.h"
 
-Bateria::Bateria(const sf::Texture& capaText, const sf::Texture& celulaText):capa(capaText), celula(celulaText)
+Bateria::Bateria(const sf::Texture& capaText, const sf::Texture& celulaText, int ID):
+    capa(capaText),
+    celula(celulaText)
 {
+    this->ID = ID;
     carga = nullptr;
-    capa.setOrigin(capa.getGlobalBounds().width/2, capa.getGlobalBounds().height/2);
-    capa.setRotation(-90);
-    capa.setScale(0.35, 0.35);
-    celula.setOrigin(celula.getGlobalBounds().width/2, celula.getGlobalBounds().height/2);
-    celula.setRotation(-90);
-    celula.setScale(0.35, 0.35);
-    celula.setColor(sf::Color(141, 200, 50));
+    if(ID == 0)
+    {
+        capa.setOrigin(capa.getGlobalBounds().width/2, capa.getGlobalBounds().height/2);
+        capa.setRotation(-90);
+        capa.setScale(0.35, 0.35);
+        celula.setOrigin(celula.getGlobalBounds().width/2, celula.getGlobalBounds().height/2);
+        celula.setRotation(-90);
+        celula.setScale(0.35, 0.35);
+        celula.setColor(sf::Color(141, 200, 50));
+    }
+    else
+    {
+        celula.setOrigin(celula.getGlobalBounds().width/2, celula.getGlobalBounds().height/2);
+        celula.setScale(0.15, 0.15);
+        //celula.setColor(sf::Color(141, 200, 50));
+    }
 }
 
 void Bateria::setCarga(int *carga)
@@ -17,22 +29,33 @@ void Bateria::setCarga(int *carga)
     this->carga = carga;
 }
 
-void    Bateria::setPosition(float x, float y)
+void Bateria::setPosition(float x, float y)
 {
-    this->capa.setPosition(x, y);
-    this->celula.setPosition(x + 30, y);
+    if(ID == 0)
+    {
+        this->capa.setPosition(x, y);
+        this->celula.setPosition(x + 30, y);
+    }
+    else
+    {
+        this->celula.setPosition(x,y);
+    }
 }
 
 void Bateria::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(capa, states);
+    if(ID == 0)
+        target.draw(capa, states);
     sf::Sprite aux = celula;
     sf::Vector2f pos = aux.getPosition();
     if(carga != nullptr)
     {
         for(int i = 0; i < *carga; i++)
         {
-            aux.setPosition(-13.5*i + pos.x, pos.y);
+            if (ID == 0)
+                aux.setPosition(-13.5*i + pos.x, pos.y);
+            else
+                aux.setPosition(-25*i + pos.x, pos.y);
             target.draw(aux);
         }
     }
@@ -40,7 +63,9 @@ void Bateria::desenhaAtual(sf::RenderTarget& target, sf::RenderStates states) co
 
 void Bateria::atualizaAtual(sf::Time dt)
 {
-    if(carga!=nullptr)
+    if(ID == 0)
+    {
+        if(carga!=nullptr)
     {
         switch(*carga)
         {
@@ -74,6 +99,8 @@ void Bateria::atualizaAtual(sf::Time dt)
 
         }
     }
+    }
+
 
 }
 

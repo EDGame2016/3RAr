@@ -22,7 +22,8 @@ class SkillsNode: public NodeCena
             SPEED,
             GAS,
             SPRAY,
-            COMETA
+            COMETA,
+            AprimoramentoCount
         };
                         SkillsNode(const sf::Texture&, const sf::Texture&, const sf::Texture&, const sf::Texture&, int);
                         ~SkillsNode();

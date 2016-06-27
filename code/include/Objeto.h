@@ -14,8 +14,17 @@ public:
         COMETA,
         SATELITE,
         OZONIO,
-        NONE
+        SKILLNAVE,
+        SKILLSHIELD,
+        SKILLCO2,
+        SKILLSPEED,
+        SKILLGAS,
+        SKILLSPRAY,
+        SKILLCOMETA,
+        NONE,
+        SKILLNONE
     };
+
 
 public:
     Objeto(Tipo ID,const sf::Texture& textura);

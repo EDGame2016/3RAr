@@ -2,17 +2,24 @@
 
 Tela::Tela(sf::RenderWindow& window):
     tela(window),
+    telaCamadas(),
+    telaFinal(),
     texturas(),
     icone(),
     info(),
-    continuar()
+    continuar(),
+    continuarFinal()
 {
+    estado = false;
     constroiCena();
 }
 
 void Tela::atualiza(sf::Time dt)
 {
-    continuar->isPressed(tela);
+    if(estado)
+        continuarFinal->isPressed(tela);
+    else
+        continuar->isPressed(tela);
 }
 
 void Tela::setCamada(int altura)
@@ -21,22 +28,26 @@ void Tela::setCamada(int altura)
     if(altura > 5800) /// Troposfera
     {
         info->setTexture(texturas[0]);
+        estado = false;
     }
     else if(altura > 3600) /// Estatosfera
     {
         info->setTexture(texturas[1]);
+        estado = false;
     }
     else if(altura > 2200) /// Mesosfera
     {
         info->setTexture(texturas[2]);
+        estado = false;
     }
     else if(altura > 800) /// Termosfera
     {
         info->setTexture(texturas[3]);
+        estado = false;
     }
     else /// Exosfera
     {
-        //info->setTexture(texturas[4]);
+        estado = true;
     }
 }
 
@@ -52,10 +63,21 @@ bool Tela::processaEventos()
         {
             if(event.mouseButton.button == sf::Mouse::Left)
             {
-                if(continuar->isSelected(tela))
-                    return true;
+                if(estado)
+                {
+                    if(continuarFinal->isSelected(tela))
+                        return true;
+                    else
+                        return false;
+                }
                 else
-                    return false;
+                {
+                    if(continuar->isSelected(tela))
+                        return true;
+                    else
+                        return false;
+
+                }
             }
             else
                 return false;
@@ -70,7 +92,6 @@ bool Tela::processaEventos()
             break;
         }
     }
-
     return false;
 }
 
@@ -78,7 +99,10 @@ void Tela::desenha()
 {
     tela.clear(sf::Color(255,255,255,0));
 
-    tela.draw(cenaTree);
+    if(estado)
+        tela.draw(telaFinal);
+    else
+        tela.draw(telaCamadas);
 }
 
 void Tela::loadTexturas()
@@ -87,6 +111,7 @@ void Tela::loadTexturas()
     texturas[1].loadFromFile("src/images/telas/c2.png");
     texturas[2].loadFromFile("src/images/telas/c3.png");
     texturas[3].loadFromFile("src/images/telas/c4.png");
+    texturas[4].loadFromFile("src/images/telas/telaFinal.png");
     texturas[5].loadFromFile("src/images/telas/continuarD.png");
     texturas[6].loadFromFile("src/images/telas/continuarS.png");
     texturas[7].loadFromFile("src/images/telas/foguete.png");
@@ -108,16 +133,28 @@ void Tela::constroiCena()
     icone->setOriginCenter();
     icone->setPosition(telaSize.x/4, 100 + telaSize.y/2);
     icone->setScale(0.5,0.5);
-    cenaTree.insereFilho(icone);
+    telaCamadas.insereFilho(icone);
 
     info = new SpriteNode(texturas[0]);
     info->setOriginCenter();
     info->setPosition(3*telaSize.x/4.f, telaSize.y/2);
-    cenaTree.insereFilho(info);
+    telaCamadas.insereFilho(info);
+
+    SpriteNode* final(new SpriteNode(texturas[4]));
+    final->setOriginCenter();
+    final->setScale(0.5,0.5);
+    final->setPosition(telaSize.x/2, telaSize.y/2);
+    telaFinal.insereFilho(final);
 
     continuar = new Button(texturas[5], texturas[6]);
     continuar->setPosition(3*telaSize.x/4.f, 8*telaSize.y/10.f);
     continuar->setOriginCenter();
     continuar->setScale(0.5, 0.5);
-    cenaTree.insereFilho(continuar);
+    telaCamadas.insereFilho(continuar);
+
+    continuarFinal = new Button(texturas[5], texturas[6]);
+    continuarFinal->setPosition(telaSize.x/2, telaSize.y - 50);
+    continuarFinal->setOriginCenter();
+    continuarFinal->setScale(0.3, 0.3);
+    telaFinal.insereFilho(continuarFinal);
 }

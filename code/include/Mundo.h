@@ -31,8 +31,8 @@ public:
     enum Estados
     {
         PAUSADO,
-        SKILL,
         JOGANDO,
+        SKILL,
         INICIO
     };
 
@@ -42,6 +42,7 @@ private:
         Background,
         MiddleBack,
         MiddleTop,
+        BackTop,
         Top,
         LayerCount
     };
@@ -75,12 +76,15 @@ private:
         OzonioB,
         BateriaCapa,
         BateriaCelula,
+        Chave,
         ObjetosTexturasCount
     };
 
     enum SoundFX
     {
-        navePartindo,
+        Launch,
+        SoundBack,
+        Pick,
         SoundFXCount
     };
 
@@ -94,13 +98,15 @@ public:
     void    reinicia();
     void    abandona();
 
+    sf::Music musicBack;
+
 private:
     void    geraCamada(int camadaID);
     void    destroiCamadas();
     void    gerenciaObjetos();
     void    loadTexturas();
     void    constroiCena();
-
+    void    atualizaArvore(bool*);
 private:
     sf::RenderWindow&   tela;
     sf::View            mundoView;
@@ -117,6 +123,7 @@ private:
     std::array<sf::Texture, ObjetosTexturasCount>   objetoText;
     std::array<sf::Texture, 8>                      nuvensText;
     std::array<sf::SoundBuffer, SoundFXCount>       soundsBuffer;
+    std::array<sf::Texture, SkillsNode::AprimoramentoCount>     skillsText;
 
     sf::FloatRect   mundoBounds;
     sf::Vector2f    viewCenter;
@@ -127,7 +134,12 @@ private:
     SpriteNode* barra;
 
     Bateria*    bateria;
+    Bateria*    danos;
     Estados     estadoAtual;
+
+    int corNuvem;
+    int ncometas;
+    bool pegouAprimoramento;
 };
 
 #endif // MUNDO_H

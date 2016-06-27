@@ -1,4 +1,5 @@
 #include "Foguete.h"
+#include <iostream>
 #include <math.h>
 
 #define PI 3.14
@@ -20,13 +21,19 @@ Foguete::Foguete(const sf::Texture& foguete, const sf::Texture& fogo1, const sf:
         fogo[i].setPosition(0,sprite.getGlobalBounds().top+sprite.getGlobalBounds().height+5);
     }
 
+    for(int i = 0; i < 7; i++)
+        aprimoramento[i] = false;
+
     this->setDirecao(0,-1);
 
     carga = 5;
     tCarga = 3;
     dano = 5;
+    shield = 100;
     isColliding = false;
     turbo = false;
+    ignoraNuvem = false;
+    camadaOzonio = false;
     tempo = sf::Time::Zero;
 }
 
@@ -55,17 +62,59 @@ void Foguete::colidiu(Objeto::Tipo objeto)
     }
     else
     {
-        if(this->isColliding == false)
+        if(objeto != Objeto::SKILLNONE)
         {
-            if(objeto == Objeto::NUVEM)
+            if(this->isColliding == false)
             {
-
+                if(objeto == Objeto::NUVEM)
+                {
+                    if(!ignoraNuvem)
+                    {
+                        dano--;
+                        this->setVelocidade(this->shield);
+                    }
+                }
+                else if(objeto == Objeto::OZONIO)
+                {
+                    if(!camadaOzonio)
+                    {
+                        dano = dano -2;
+                    }
+                }
+                else if(objeto == Objeto::COMETA || objeto == Objeto::SATELITE || objeto == Objeto::BALAO)
+                {
+                    dano--;
+                    this->setVelocidade(this->shield);
+                }
+                isColliding = true;
             }
-            dano--;
-            isColliding = true;
-        }
 
-        ///this->setVelocidade(100);
+        }
+        if(objeto == Objeto::SKILLCO2)
+        {
+            aprimoramento[SkillsNode::CO2] = true;
+        }
+        if(objeto == Objeto::SKILLSHIELD)
+        {
+            aprimoramento[SkillsNode::SHIELD] = true;
+
+        }
+        if(objeto == Objeto::SKILLSPEED)
+        {
+            aprimoramento[SkillsNode::SPEED] = true;
+        }
+        if(objeto == Objeto::SKILLGAS)
+        {
+            aprimoramento[SkillsNode::GAS] = true;
+        }
+        if(objeto == Objeto::SKILLSPRAY)
+        {
+            aprimoramento[SkillsNode::SPRAY] = true;
+        }
+        if(objeto == Objeto::SKILLCOMETA)
+        {
+            aprimoramento[SkillsNode::COMETA] = true;
+        }
     }
 }
 
@@ -76,7 +125,6 @@ void Foguete::reinicia()
     setVelocidade(0);
     setAceleracao(0);
     this->carga = 5;
-    this->dano = 5;
     setEstado(false);
 
 }
@@ -137,11 +185,11 @@ void Foguete::atualizaAtual(sf::Time dt)
             acelera(10*dt.asSeconds());
             atualizaVelocidade();
         }
-        /**else if(turbo && getVelocidade() < 500)
+        else if(turbo && getVelocidade() < 500)
         {
             acelera(5*dt.asSeconds());
             atualizaVelocidade();
-        }**/
+        }
 
         sf::Vector2f position;
         position.x = getVelocidade() * getDirecao().x * dt.asSeconds();

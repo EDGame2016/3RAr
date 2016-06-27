@@ -57,7 +57,9 @@ public:
     void								desenha();
     void                                constroiArvore(SkillsNode*, float, float);
     Evento                              processaEventos();
-
+    bool                                atualizacao;
+    void                              reinicia();
+    SkillsNode* R;
 private:
 
     void                                loadTexturas();
@@ -71,7 +73,6 @@ private:
     Button* jogar;
     Button* sair;
 
-    SkillsNode* R;
 };
 
 #endif // SKILLS_H

@@ -6,6 +6,7 @@
 
 #include <array>
 
+#include "SkillsNode.h"
 #include "Entidade.h"
 #include "Objeto.h"
 
@@ -35,6 +36,10 @@ public:
     sf::Sound                   partidaSound;
     int                         carga, tCarga;
     int                         dano;
+    int                         shield;
+    bool                        aprimoramento[7];
+    bool                        ignoraNuvem;
+    bool                        camadaOzonio;
 
     sf::Time                    tempo;
 
